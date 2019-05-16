@@ -1,0 +1,7 @@
+------------------------------------------------------------
+起始记录时间:2019-03-31 10:53:21
+ExeFileName:c:\Users\Administrator\Desktop\2019112\led_tool\led_tool\Debug\led_tool.exe
+------------------------------------------------------------
+2019-03-31 10:53:21	[GT_MEMORY]free_thread_memory_pool thread:3856
+2019-03-31 10:53:22	[GT_MEMORY]free_thread_memory_pool thread:4820
+2019-03-31 10:53:34	[GT_MEMORY]free_thread_memory_pool thread:4420

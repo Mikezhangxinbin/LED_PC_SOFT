@@ -1,0 +1,46 @@
+﻿  StdAfx.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+  ini.cpp
+  led_tool.cpp
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tool.cpp(59): warning C4996: 'CWinApp::Enable3dControlsStatic': CWinApp::Enable3dControlsStatic is no longer needed. You should remove this call.
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\atlmfc\include\afxwin2.inl(1077): note: see declaration of 'CWinApp::Enable3dControlsStatic'
+  led_toolDlg.cpp
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(523): warning C4102: 'RETURN': unreferenced label
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(609): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(610): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(621): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(622): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(623): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(658): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(659): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(660): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(890): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1103): warning C4101: 'len': unreferenced local variable
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1105): warning C4101: 'my_area': unreferenced local variable
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1396): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1401): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1647): warning C4267: 'argument': conversion from 'size_t' to 'USHORT', possible loss of data
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1713): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1719): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1730): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1767): warning C4018: '<': signed/unsigned mismatch
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1786): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+  websocket_endpoint.cpp
+  Generating Code...
+c:\xb_zhang\led_tool\1\led_tool\led_tool\project\led_tooldlg.cpp(1545): warning C4700: uninitialized local variable 's_char' used
+  led_tool.vcxproj -> C:\xb_zhang\led_tool\1\led_tool\led_tool\Project\.\Release\led_tool.exe

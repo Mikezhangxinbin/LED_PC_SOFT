@@ -1,0 +1,8 @@
+------------------------------------------------------------
+起始记录时间:2019-04-20 17:05:01
+ExeFileName:D:\Project\led_tool\.\Release\led_tool.exe
+------------------------------------------------------------
+2019-04-20 17:05:01	[GT_MEMORY]free_thread_memory_pool thread:11228
+2019-04-20 17:05:01	[GT_MEMORY]free_thread_memory_pool thread:1956
+2019-04-20 17:06:57	[GT_MEMORY]free_thread_memory_pool thread:10760
+2019-04-20 17:08:21	[GT_MEMORY]free_thread_memory_pool thread:12028
