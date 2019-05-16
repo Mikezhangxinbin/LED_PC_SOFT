@@ -147,6 +147,7 @@ BOOL CLed_toolDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	CString strInfo;
+	CString strwarning;
 
 	// Add "About..." menu item to system menu.
 
@@ -159,7 +160,8 @@ BOOL CLed_toolDlg::OnInitDialog()
 	License_Enable = strcmp(Get_Machine_data,"00E18CB63528000806E9-00000000-00000000");
 	if (License_Enable)
 	{
-		AfxMessageBox("Warning:Soft Have no License");
+		strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
+		AfxMessageBox(strwarning);
 
 		OnOK();
 			
