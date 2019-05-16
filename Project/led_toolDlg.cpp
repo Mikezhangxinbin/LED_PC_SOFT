@@ -1606,7 +1606,7 @@ void CLed_toolDlg::onWebMessage(std::string strMessage)
 	int led_id = 0;
 	if (m_bConnect)
 	{
-		//        strMessage.replace(" ",);
+	
 		int index = 0;
 		memset(R_temp, 0x0, 200);
 		memcpy(R_temp, strMessage.c_str(), strMessage.length());
