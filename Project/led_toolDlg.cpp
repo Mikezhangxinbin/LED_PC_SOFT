@@ -157,8 +157,8 @@ BOOL CLed_toolDlg::OnInitDialog()
 	//Get_Data_From_Json();
 #if 1
 	OnGetjiqima();
-	License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
-	//License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); 01
+	//License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
+	License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
 	if (License_Enable)
 	{
 		strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
@@ -1477,14 +1477,14 @@ void CLed_toolDlg::OnWebBnClickedConnect()
 
 	bool done = false;
 	USES_CONVERSION;
-#if 1
-	char* s_char = W2A(L"ws://47.99.146.195:11232/storeSocket/station/SJ1631");
+#if 1""
+	char* s_char = W2A(L"ws://47.99.146.195:11232/storeSocket/station/GDA0500");// SJ1631");
 		
 	std::string input = s_char;
 
 	//        kagula::websocket_endpoint endpoint;
 	//        USES_CONVERSION;
-	char* s_charAddr = W2A(L"ws://47.99.146.195:11232/storeSocket/station/SJ1631");
+	char* s_charAddr = W2A(L"ws://47.99.146.195:11232/storeSocket/station/GDA0500");// SJ1631");
 
 #else
 	char* s_char = W2A(L"ws://127.0.0.1:9000\n");
