@@ -294,7 +294,7 @@ memset(sname[9], 0x0, 50);
 	//hThreadEvent1=CreateThread(NULL,0,
 						//  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
 						//  NULL,0,NULL);  //创建事件线程
-
+  OnBnClickedButton7();
 	SetTimer(2,1000,NULL);
 	SetTimer(1, 30000, NULL);
 	
@@ -1064,6 +1064,7 @@ void CLed_toolDlg::OnBnClickedButton6()
 	Mc_onConnect();
 }
 
+CString led_Status;
 void CLed_toolDlg::OnBnClickedButton7()
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -1092,9 +1093,9 @@ void CLed_toolDlg::OnBnClickedButton7()
 	dwHand[8] = CreateClient("192.168.0.209", 5005, BX_5MK1, 1, 1, NULL);
 	dwHand[9] = CreateClient("192.168.0.210", 5005, BX_5MK1, 1, 1, NULL);
 #endif
-	CString prompt;
-	prompt.Format("%d, %d,%d, %d,%d, %d,%d, %d,%d, %d", dwHand[0], dwHand[1], dwHand[2], dwHand[3], dwHand[4], dwHand[5], dwHand[6], dwHand[7], dwHand[8], dwHand[9]);
-	AfxMessageBox(prompt);
+	
+	led_Status.Format("%d,%d,%d, %d,%d, %d,%d, %d,%d, %d\r\n", dwHand[0]&0x1, dwHand[1]&0x1, dwHand[2]&0x1, dwHand[3]&0x1, dwHand[4]&0x1, dwHand[5]&0x1, dwHand[6]&0x1, dwHand[7]&0x1, dwHand[8]&0x1, dwHand[9]&0x1);
+	//AfxMessageBox(prompt);
 //	SetTimer(1, 5000, NULL);
 
 	 //CON_Reset(dwHand);
@@ -1621,6 +1622,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 		if (m_bConnect == FALSE)
 		{
 			OnWebBnClickedConnect();
+			USES_CONVERSION;
+		//	char* s_char = W2A(led_Status.GetBuffer(led_Status.GetLength());
+		//	std::string input = s_char;
+			endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
+			
 
 		}
 	}
