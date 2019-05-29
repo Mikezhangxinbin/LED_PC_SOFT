@@ -1065,6 +1065,7 @@ void CLed_toolDlg::OnBnClickedButton6()
 }
 
 CString led_Status;
+int      led_error = 0;
 void CLed_toolDlg::OnBnClickedButton7()
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -1093,8 +1094,16 @@ void CLed_toolDlg::OnBnClickedButton7()
 	dwHand[8] = CreateClient("192.168.0.209", 5005, BX_5MK1, 1, 1, NULL);
 	dwHand[9] = CreateClient("192.168.0.210", 5005, BX_5MK1, 1, 1, NULL);
 #endif
-	
-	led_Status.Format("%d,%d,%d, %d,%d, %d,%d, %d,%d, %d\r\n", dwHand[0]&0x1, dwHand[1]&0x1, dwHand[2]&0x1, dwHand[3]&0x1, dwHand[4]&0x1, dwHand[5]&0x1, dwHand[6]&0x1, dwHand[7]&0x1, dwHand[8]&0x1, dwHand[9]&0x1);
+	if (dwHand[0] & dwHand[1] & dwHand[2] & dwHand[3] & dwHand[4] & dwHand[5] & dwHand[6] & dwHand[7] & dwHand[8] & dwHand[9])
+	{
+		led_error = 0;
+		led_Status.Format("led success");
+	}
+	else
+	{
+		led_error = 1;
+		led_Status.Format("12001-%X,%X,%X,%X,%X,%X,%X,%X,%X,%X\r\n", dwHand[0], dwHand[1], dwHand[2], dwHand[3], dwHand[4], dwHand[5], dwHand[6], dwHand[7], dwHand[8], dwHand[9]);
+	}
 	//AfxMessageBox(prompt);
 //	SetTimer(1, 5000, NULL);
 
@@ -1625,7 +1634,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 			USES_CONVERSION;
 		//	char* s_char = W2A(led_Status.GetBuffer(led_Status.GetLength());
 		//	std::string input = s_char;
-			endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
+			//char* s_char = W2A(L"");
+			//std::string input = s_char;
+			Sleep(1000);
+			//endpoint.send(input);
+			if(led_error) endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
 			
 
 		}
