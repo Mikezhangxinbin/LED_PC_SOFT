@@ -157,8 +157,8 @@ BOOL CLed_toolDlg::OnInitDialog()
 	//Get_Data_From_Json();
 #if 1
 	OnGetjiqima();
-	//License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
-	License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
+	License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
+	//License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
 	if (License_Enable)
 	{
 		strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
@@ -224,6 +224,7 @@ memset(sname[6], 0x0, 50);
 memset(sname[7], 0x0, 50);
 memset(sname[8], 0x0, 50);
 memset(sname[9], 0x0, 50);
+memset(store_id, 0x0, 100);
 	strInfo = nIniParam.GetValue("SIS_Name", "name_1", "FFFFFFFF");
 	memcpy(sname[0],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
@@ -253,6 +254,9 @@ memset(sname[9], 0x0, 50);
 
 	strInfo = nIniParam.GetValue("SIS_Name", "name_10", "FFFFFFFF");
 	memcpy(sname[9], strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+
+	strInfo = nIniParam.GetValue("StoreID", "server_ip", "FFFFFFFF");
+	memcpy(store_id, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
 
 
 	::GetPrivateProfileString("UseFileName","FileName","Error",OpenFilePath.GetBuffer(MAX_PATH),MAX_PATH,ConfigPathName);
@@ -294,7 +298,7 @@ memset(sname[9], 0x0, 50);
 	//hThreadEvent1=CreateThread(NULL,0,
 						//  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
 						//  NULL,0,NULL);  //创建事件线程
-  OnBnClickedButton7();
+ // OnBnClickedButton7();
 	SetTimer(2,1000,NULL);
 	SetTimer(1, 30000, NULL);
 	
@@ -1286,28 +1290,9 @@ void CLed_toolDlg::OnWebBnClickedConnect()
 	GetDlgItemText(IDC_IPADDRESS1, m_strAddress);
 
 	bool done = false;
-	USES_CONVERSION;
-#if 1
-	char* s_char = W2A(L"ws://47.99.146.195:11232/storeSocket/station/GDA0500");// SJ1631");
-	//char* s_char = W2A(L"ws://47.99.146.195:11232/storeSocket/station/SJ1666");// SJ1631");
-	std::string input = s_char;
 
-	//        kagula::websocket_endpoint endpoint;
-	//        USES_CONVERSION;
-	char* s_charAddr = W2A(L"ws://47.99.146.195:11232/storeSocket/station/GDA0500");// SJ1631");
-	//char* s_charAddr = W2A(L"ws://47.99.146.195:11232/storeSocket/station/ SJ1666");
-
-#else
-	char* s_char = W2A(L"ws://127.0.0.1:9000\n");
-
-	std::string input = s_char;
-
-	//        kagula::websocket_endpoint endpoint;
-	//        USES_CONVERSION;
-	char* s_charAddr = W2A(L"ws://127.0.0.1:9000\n");
-#endif
-	readAndWriteConfigure(s_charAddr, 1);
-	if (0 == endpoint.connect(s_char, this))
+	readAndWriteConfigure(store_id, 1);
+	if (0 == endpoint.connect(store_id, this))
 	{
 		//m_bConnect = 1;
 		//AfxMessageBox("WebSocket Connect Success!");

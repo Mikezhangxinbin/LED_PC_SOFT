@@ -83,6 +83,8 @@ public:
 	char*	sunit[TAG_NUM];			//in/out单位 16
 	DWORD   dwid[TAG_NUM];			//in/out标签ID
 	WORD	wtype[TAG_NUM];			//in/out数据类型
+
+	char	store_id[200];			//in/out标签名 80
 	BOOL License_Enable;
 	void Connect();
 	void readdata();
