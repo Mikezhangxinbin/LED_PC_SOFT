@@ -157,8 +157,8 @@ BOOL CLed_toolDlg::OnInitDialog()
 	//Get_Data_From_Json();
 #if 1
 	OnGetjiqima();
-	//License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
-	License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
+	License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
+	//License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
 	if (License_Enable)
 	{
 		strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
@@ -224,6 +224,7 @@ memset(sname[6], 0x0, 50);
 memset(sname[7], 0x0, 50);
 memset(sname[8], 0x0, 50);
 memset(sname[9], 0x0, 50);
+memset(store_id, 0x0, 100);
 	strInfo = nIniParam.GetValue("SIS_Name", "name_1", "FFFFFFFF");
 	memcpy(sname[0],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
@@ -253,6 +254,9 @@ memset(sname[9], 0x0, 50);
 
 	strInfo = nIniParam.GetValue("SIS_Name", "name_10", "FFFFFFFF");
 	memcpy(sname[9], strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+
+	strInfo = nIniParam.GetValue("StoreID", "server_ip", "FFFFFFFF");
+	memcpy(store_id, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
 
 
 	::GetPrivateProfileString("UseFileName","FileName","Error",OpenFilePath.GetBuffer(MAX_PATH),MAX_PATH,ConfigPathName);
@@ -294,7 +298,7 @@ memset(sname[9], 0x0, 50);
 	//hThreadEvent1=CreateThread(NULL,0,
 						//  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
 						//  NULL,0,NULL);  //创建事件线程
-  OnBnClickedButton7();
+ // OnBnClickedButton7();
 	SetTimer(2,1000,NULL);
 	SetTimer(1, 30000, NULL);
 	
@@ -1286,28 +1290,9 @@ void CLed_toolDlg::OnWebBnClickedConnect()
 	GetDlgItemText(IDC_IPADDRESS1, m_strAddress);
 
 	bool done = false;
-	USES_CONVERSION;
-#if 1
-	char* s_char = W2A(L"ws://47.99.146.195:11232/storeSocket/station/GDA0500");// SJ1631");
-	//char* s_char = W2A(L"ws://47.99.146.195:11232/storeSocket/station/SJ1666");// SJ1631");
-	std::string input = s_char;
 
-	//        kagula::websocket_endpoint endpoint;
-	//        USES_CONVERSION;
-	char* s_charAddr = W2A(L"ws://47.99.146.195:11232/storeSocket/station/GDA0500");// SJ1631");
-	//char* s_charAddr = W2A(L"ws://47.99.146.195:11232/storeSocket/station/ SJ1666");
-
-#else
-	char* s_char = W2A(L"ws://127.0.0.1:9000\n");
-
-	std::string input = s_char;
-
-	//        kagula::websocket_endpoint endpoint;
-	//        USES_CONVERSION;
-	char* s_charAddr = W2A(L"ws://127.0.0.1:9000\n");
-#endif
-	readAndWriteConfigure(s_charAddr, 1);
-	if (0 == endpoint.connect(s_char, this))
+	readAndWriteConfigure(store_id, 1);
+	if (0 == endpoint.connect(store_id, this))
 	{
 		//m_bConnect = 1;
 		//AfxMessageBox("WebSocket Connect Success!");
@@ -1632,18 +1617,22 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 		{
 			OnWebBnClickedConnect();
 			USES_CONVERSION;
-		//	char* s_char = W2A(led_Status.GetBuffer(led_Status.GetLength());
-		//	std::string input = s_char;
-			//char* s_char = W2A(L"");
-			//std::string input = s_char;
+			//	char* s_char = W2A(led_Status.GetBuffer(led_Status.GetLength());
+			//	std::string input = s_char;
+				//char* s_char = W2A(L"");
+				//std::string input = s_char;
 			Sleep(1000);
 			//endpoint.send(input);
-			if(led_error) endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
-			
+			if (led_error) endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
+
 
 		}
 	}
+<<<<<<< HEAD
 	if (nIDEvent ==1)//Time1 deal
+=======
+	if (nIDEvent == 1)//Time1 deal
+>>>>>>> feature
 	{
 		if (m_bConnect)
 		{
@@ -1653,201 +1642,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 			std::string input = s_char;
 			endpoint.send(input);
 
-			
-		
+
+
 		}
 
 	}
-	Sleep(5000);
-#if 0
-	for (i = 0; i < 10; i++)
-	{
-		Sleep(100);
-		if (dwHand[i] != 0)
-		{
-			tmp.Format("        %s", sname[i]);
 
-			my_area.AreaX = 0;
-			my_area.AreaY = 0;
-			my_area.AreaType = 0x07;
-			my_area.AreaWidth = 24;
-			my_area.AreaHeight = 64;
-			my_area.Lines_sizes = 0;
-
-			my_area.Reserved[0] = 1;
-			my_area.Reserved[1] = 1;
-			my_area.Reserved[2] = 1;
-
-			my_area.DynamicAreaLoc = 0;   //定义一个动态
-			my_area.RunMode = 0;//RunMode_list[rl];
-
-			my_area.Timeout = 10;
-			my_area.SingleLine = 2;
-			my_area.NewLine = 2;
-			my_area.DisplayMode = 1;
-			my_area.ExitMode = 0x00;
-			my_area.Speed = 0;
-			my_area.StayTime = 0;
-			my_area.DataLen = tmp.GetLength();// strlen(sname[i]);
-
-
-
-			SCREEN_SendDynamicArea(dwHand[i], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-			//SCREEN_SendDynamicArea(dwHand[i], my_area, strlen(sname[i]), (BYTE*)sname[i]);
-
-		}
-		//CON_Reset(dwHand);
-#if 0
-		tmp.Format("泸A11111   :  吴先生");
-
-
-		my_area.AreaX = 0;
-		my_area.AreaY = 16;
-		my_area.AreaType = 0x06;
-		my_area.AreaWidth = 24;
-		my_area.AreaHeight = 16;
-		my_area.Lines_sizes = 1;
-
-		my_area.Reserved[0] = 0;
-		my_area.Reserved[1] = 0;
-		my_area.Reserved[2] = 0;
-
-		my_area.DynamicAreaLoc = 1;   //定义一个动态
-		my_area.RunMode = 0;//RunMode_list[rl];
-
-		my_area.Timeout = 10;
-		my_area.SingleLine = 1;
-		my_area.NewLine = 1;
-		my_area.DisplayMode = 2;
-		my_area.ExitMode = 0x00;
-		my_area.Speed = 10;
-		my_area.StayTime = 20000;
-		my_area.DataLen = tmp.GetLength();
-
-
-
-		//	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
-
-
-		//CON_ControllerStatus(dwHand,SAT,&len);
-		//USHORT screenid=0;
-		//int err=CON_ReadScreenID(dwHand,&screenid);
-		//CON_SetScreenID(dwHand,1);
-		//OFS_SendFileData(dwHand,1,"C:\Screen.xml",0,1,programLif,1,0,NULL,1, AreaDatatLis,1);
-
-		SCREEN_SendDynamicArea(dwHand[id], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-		//CON_Reset(dwHand);
-
-
-
-		tmp.Format("剩余维修时长   :  24:00");
-
-
-		my_area.AreaX = 0;
-		my_area.AreaY = 32;
-		my_area.AreaType = 0x06;
-		my_area.AreaWidth = 24;
-		my_area.AreaHeight = 16;
-		my_area.Lines_sizes = 1;
-
-		my_area.Reserved[0] = 0;
-		my_area.Reserved[1] = 0;
-		my_area.Reserved[2] = 0;
-
-		my_area.DynamicAreaLoc = 2;   //定义一个动态
-		my_area.RunMode = 0;//RunMode_list[rl];
-
-		my_area.Timeout = 10;
-		my_area.SingleLine = 1;
-		my_area.NewLine = 1;
-		my_area.DisplayMode = 2;
-		my_area.ExitMode = 0x00;
-		my_area.Speed = 10;
-		my_area.StayTime = 20;
-		my_area.DataLen = tmp.GetLength();
-
-
-		//	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
-
-
-		//CON_ControllerStatus(dwHand,SAT,&len);
-		//USHORT screenid=0;
-		//int err=CON_ReadScreenID(dwHand,&screenid);
-		//CON_SetScreenID(dwHand,1);
-		//OFS_SendFileData(dwHand,1,"C:\Screen.xml",0,1,programLif,1,0,NULL,1, AreaDatatLis,1);
-
-		SCREEN_SendDynamicArea(dwHand[id], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-		//CON_Reset(dwHand);
-
-
-
-		tmp.Format("技师名字   :    已维修%d辆", count++);
-		bx_5k_area_header my_area;
-		my_area.AreaX = 0;
-		my_area.AreaY = 48;
-		my_area.AreaType = 0x06;
-		my_area.AreaWidth = 24;
-		my_area.AreaHeight = 16;
-		my_area.Lines_sizes = 1;
-
-		my_area.Reserved[0] = 0;
-		my_area.Reserved[1] = 0;
-		my_area.Reserved[2] = 0;
-
-		my_area.DynamicAreaLoc = 3;   //定义一个动态
-		my_area.RunMode = 0;//RunMode_list[rl];
-
-		my_area.Timeout = 10;
-		my_area.SingleLine = 1;
-		my_area.NewLine = 1;
-		my_area.DisplayMode = 2;
-		my_area.ExitMode = 0x00;
-		my_area.Speed = 10;
-		my_area.StayTime = 100;
-		my_area.DataLen = tmp.GetLength();
-
-
-
-		//	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
-
-
-		//CON_ControllerStatus(dwHand,SAT,&len);
-		//USHORT screenid=0;
-		//int err=CON_ReadScreenID(dwHand,&screenid);
-		//CON_SetScreenID(dwHand,1);
-		//OFS_SendFileData(dwHand,1,"C:\Screen.xml",0,1,programLif,1,0,NULL,1, AreaDatatLis,1);
-
-		SCREEN_SendDynamicArea(dwHand[0], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-#endif
-	}
-	Sleep(10000);
-#endif
-
-#if 0
-	if (nIDEvent == 2)
-	{
-
-
-		if (dl)
-		{
-			dl = 0;
-			//	AfxMessageBox(display);
-
-			UpdateData(true);
-			m_statedisplay = display;
-
-			//	m_login.set
-
-			//	AfxMessageBox(m_statedisplay);
-			UpdateData(false);
-
-		}
-	}
-	if (nIDEvent == 1)
-	{
-
-		OnBtnSend2();
-	}
-#endif
 
 }
