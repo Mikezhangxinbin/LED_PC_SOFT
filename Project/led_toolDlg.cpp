@@ -1632,18 +1632,18 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 		{
 			OnWebBnClickedConnect();
 			USES_CONVERSION;
-		//	char* s_char = W2A(led_Status.GetBuffer(led_Status.GetLength());
-		//	std::string input = s_char;
-			//char* s_char = W2A(L"");
-			//std::string input = s_char;
+			//	char* s_char = W2A(led_Status.GetBuffer(led_Status.GetLength());
+			//	std::string input = s_char;
+				//char* s_char = W2A(L"");
+				//std::string input = s_char;
 			Sleep(1000);
 			//endpoint.send(input);
-			if(led_error) endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
-			
+			if (led_error) endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
+
 
 		}
 	}
-	if (nIDEvent ==1)//Time1 deal
+	if (nIDEvent == 1)//Time1 deal
 	{
 		if (m_bConnect)
 		{
@@ -1653,201 +1653,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 			std::string input = s_char;
 			endpoint.send(input);
 
-			
-		
+
+
 		}
 
 	}
-	Sleep(5000);
-#if 0
-	for (i = 0; i < 10; i++)
-	{
-		Sleep(100);
-		if (dwHand[i] != 0)
-		{
-			tmp.Format("        %s", sname[i]);
 
-			my_area.AreaX = 0;
-			my_area.AreaY = 0;
-			my_area.AreaType = 0x07;
-			my_area.AreaWidth = 24;
-			my_area.AreaHeight = 64;
-			my_area.Lines_sizes = 0;
-
-			my_area.Reserved[0] = 1;
-			my_area.Reserved[1] = 1;
-			my_area.Reserved[2] = 1;
-
-			my_area.DynamicAreaLoc = 0;   //定义一个动态
-			my_area.RunMode = 0;//RunMode_list[rl];
-
-			my_area.Timeout = 10;
-			my_area.SingleLine = 2;
-			my_area.NewLine = 2;
-			my_area.DisplayMode = 1;
-			my_area.ExitMode = 0x00;
-			my_area.Speed = 0;
-			my_area.StayTime = 0;
-			my_area.DataLen = tmp.GetLength();// strlen(sname[i]);
-
-
-
-			SCREEN_SendDynamicArea(dwHand[i], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-			//SCREEN_SendDynamicArea(dwHand[i], my_area, strlen(sname[i]), (BYTE*)sname[i]);
-
-		}
-		//CON_Reset(dwHand);
-#if 0
-		tmp.Format("泸A11111   :  吴先生");
-
-
-		my_area.AreaX = 0;
-		my_area.AreaY = 16;
-		my_area.AreaType = 0x06;
-		my_area.AreaWidth = 24;
-		my_area.AreaHeight = 16;
-		my_area.Lines_sizes = 1;
-
-		my_area.Reserved[0] = 0;
-		my_area.Reserved[1] = 0;
-		my_area.Reserved[2] = 0;
-
-		my_area.DynamicAreaLoc = 1;   //定义一个动态
-		my_area.RunMode = 0;//RunMode_list[rl];
-
-		my_area.Timeout = 10;
-		my_area.SingleLine = 1;
-		my_area.NewLine = 1;
-		my_area.DisplayMode = 2;
-		my_area.ExitMode = 0x00;
-		my_area.Speed = 10;
-		my_area.StayTime = 20000;
-		my_area.DataLen = tmp.GetLength();
-
-
-
-		//	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
-
-
-		//CON_ControllerStatus(dwHand,SAT,&len);
-		//USHORT screenid=0;
-		//int err=CON_ReadScreenID(dwHand,&screenid);
-		//CON_SetScreenID(dwHand,1);
-		//OFS_SendFileData(dwHand,1,"C:\Screen.xml",0,1,programLif,1,0,NULL,1, AreaDatatLis,1);
-
-		SCREEN_SendDynamicArea(dwHand[id], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-		//CON_Reset(dwHand);
-
-
-
-		tmp.Format("剩余维修时长   :  24:00");
-
-
-		my_area.AreaX = 0;
-		my_area.AreaY = 32;
-		my_area.AreaType = 0x06;
-		my_area.AreaWidth = 24;
-		my_area.AreaHeight = 16;
-		my_area.Lines_sizes = 1;
-
-		my_area.Reserved[0] = 0;
-		my_area.Reserved[1] = 0;
-		my_area.Reserved[2] = 0;
-
-		my_area.DynamicAreaLoc = 2;   //定义一个动态
-		my_area.RunMode = 0;//RunMode_list[rl];
-
-		my_area.Timeout = 10;
-		my_area.SingleLine = 1;
-		my_area.NewLine = 1;
-		my_area.DisplayMode = 2;
-		my_area.ExitMode = 0x00;
-		my_area.Speed = 10;
-		my_area.StayTime = 20;
-		my_area.DataLen = tmp.GetLength();
-
-
-		//	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
-
-
-		//CON_ControllerStatus(dwHand,SAT,&len);
-		//USHORT screenid=0;
-		//int err=CON_ReadScreenID(dwHand,&screenid);
-		//CON_SetScreenID(dwHand,1);
-		//OFS_SendFileData(dwHand,1,"C:\Screen.xml",0,1,programLif,1,0,NULL,1, AreaDatatLis,1);
-
-		SCREEN_SendDynamicArea(dwHand[id], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-		//CON_Reset(dwHand);
-
-
-
-		tmp.Format("技师名字   :    已维修%d辆", count++);
-		bx_5k_area_header my_area;
-		my_area.AreaX = 0;
-		my_area.AreaY = 48;
-		my_area.AreaType = 0x06;
-		my_area.AreaWidth = 24;
-		my_area.AreaHeight = 16;
-		my_area.Lines_sizes = 1;
-
-		my_area.Reserved[0] = 0;
-		my_area.Reserved[1] = 0;
-		my_area.Reserved[2] = 0;
-
-		my_area.DynamicAreaLoc = 3;   //定义一个动态
-		my_area.RunMode = 0;//RunMode_list[rl];
-
-		my_area.Timeout = 10;
-		my_area.SingleLine = 1;
-		my_area.NewLine = 1;
-		my_area.DisplayMode = 2;
-		my_area.ExitMode = 0x00;
-		my_area.Speed = 10;
-		my_area.StayTime = 100;
-		my_area.DataLen = tmp.GetLength();
-
-
-
-		//	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
-
-
-		//CON_ControllerStatus(dwHand,SAT,&len);
-		//USHORT screenid=0;
-		//int err=CON_ReadScreenID(dwHand,&screenid);
-		//CON_SetScreenID(dwHand,1);
-		//OFS_SendFileData(dwHand,1,"C:\Screen.xml",0,1,programLif,1,0,NULL,1, AreaDatatLis,1);
-
-		SCREEN_SendDynamicArea(dwHand[0], my_area, tmp.GetLength(), (BYTE*)tmp.GetBuffer(tmp.GetLength()));
-#endif
-	}
-	Sleep(10000);
-#endif
-
-#if 0
-	if (nIDEvent == 2)
-	{
-
-
-		if (dl)
-		{
-			dl = 0;
-			//	AfxMessageBox(display);
-
-			UpdateData(true);
-			m_statedisplay = display;
-
-			//	m_login.set
-
-			//	AfxMessageBox(m_statedisplay);
-			UpdateData(false);
-
-		}
-	}
-	if (nIDEvent == 1)
-	{
-
-		OnBtnSend2();
-	}
-#endif
 
 }
