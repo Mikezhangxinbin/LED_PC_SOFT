@@ -298,7 +298,7 @@ memset(store_id, 0x0, 100);
 	//hThreadEvent1=CreateThread(NULL,0,
 						//  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
 						//  NULL,0,NULL);  //创建事件线程
- // OnBnClickedButton7();
+     OnBnClickedButton7();
 	SetTimer(2,1000,NULL);
 	SetTimer(1, 30000, NULL);
 	
@@ -1628,11 +1628,7 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 
 		}
 	}
-<<<<<<< HEAD
 	if (nIDEvent ==1)//Time1 deal
-=======
-	if (nIDEvent == 1)//Time1 deal
->>>>>>> feature
 	{
 		if (m_bConnect)
 		{
