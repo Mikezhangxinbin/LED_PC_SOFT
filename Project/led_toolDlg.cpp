@@ -1626,7 +1626,7 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 	CString prompt;
 	bx_5k_area_header my_area;
 	int i = 0;
-	if (nIDEvent == 2)
+	if (nIDEvent == 2) //Time2 deal
 	{
 		if (m_bConnect == FALSE)
 		{
@@ -1643,7 +1643,7 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 
 		}
 	}
-	if (nIDEvent ==1)//connect_web_ok)
+	if (nIDEvent ==1)//Time1 deal
 	{
 		if (m_bConnect)
 		{
