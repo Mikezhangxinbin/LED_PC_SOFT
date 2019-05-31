@@ -1628,7 +1628,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 
 		}
 	}
+<<<<<<< HEAD
 	if (nIDEvent ==1)//Time1 deal
+=======
+	if (nIDEvent == 1)//Time1 deal
+>>>>>>> 50a751dfa9b963d842705431548dc263c3394b53
 	{
 		if (m_bConnect)
 		{
@@ -1638,8 +1642,13 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 			std::string input = s_char;
 			endpoint.send(input);
 
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 50a751dfa9b963d842705431548dc263c3394b53
 		}
 
 	}
