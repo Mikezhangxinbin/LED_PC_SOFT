@@ -1086,17 +1086,17 @@ void CLed_toolDlg::OnBnClickedButton7()
 	
 //	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
 
-	dwHand[0] = CreateClient("192.168.0.201", 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[0] = CreateClient(sname[0], 5005, BX_5MK1, 1, 1, NULL);
 #if 1
-	dwHand[1] = CreateClient("192.168.0.202", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[2]  = CreateClient("192.168.0.203", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[3]  = CreateClient("192.168.0.204", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[4]  = CreateClient("192.168.0.205", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[5]  = CreateClient("192.168.0.206", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[6] = CreateClient("192.168.0.207", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[7] = CreateClient("192.168.0.208", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[8] = CreateClient("192.168.0.209", 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[9] = CreateClient("192.168.0.210", 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[1] = CreateClient(sname[1], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[2]  = CreateClient(sname[2], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[3]  = CreateClient(sname[3], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[4]  = CreateClient(sname[4], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[5]  = CreateClient(sname[5], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[6] = CreateClient(sname[6], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[7] = CreateClient(sname[7], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[8] = CreateClient(sname[8], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[9] = CreateClient(sname[9], 5005, BX_5MK1, 1, 1, NULL);
 #endif
 	if (dwHand[0] & dwHand[1] & dwHand[2] & dwHand[3] & dwHand[4] & dwHand[5] & dwHand[6] & dwHand[7] & dwHand[8] & dwHand[9])
 	{
