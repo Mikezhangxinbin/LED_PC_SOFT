@@ -1234,47 +1234,6 @@ void CLed_toolDlg::OnGetjiqima()
 
 }
 
-#if 0
-
-#pragma comment(lib,"json.lib")
-#include "json.h"
-
-
-void CLed_toolDlg::Get_Data_From_Json()
-{
-	// TODO: 在此添加控件通知处理程序代码
-	CString strJson = _T("{\"id\":\"123456\",\"username\":\"456789\",\"password\":\"00000\",\"addr\":\"地址地址直直直起卦\",\"array\":[{\"cpp\":\"jsoncpp\"},{\"java\":\"jsoninjava\"},{\"php\":\"support\"}],\"json\":{\"id\":\"0000\",\"username\":\"000001\"}}");
-	Json::Reader reader;
-	Json::Value root;
-
-	USES_CONVERSION;
-	char* cJson = T2A(strJson.GetBuffer(0));
-	strJson.ReleaseBuffer();
-
-	CString addr, username, cpp, jsonid;
-
-	if (reader.parse(cJson, root))
-	{
-		//取得数据
-		addr = root["addr"].asCString();
-		username = root["username"].asCString();
-		//遍历JSON数组
-		const Json::Value arrayObj = root["array"];
-		for (unsigned int i = 0; i < arrayObj.size(); i++)
-		{
-			if (!arrayObj[i].isMember("cpp"))
-				continue;
-			cpp = arrayObj[i]["cpp"].asCString();
-		}
-		//取得JSON数据
-		const Json::Value jsonObj = root["json"];
-		jsonid = jsonObj["id"].asCString();
-	}
-	CString str1;
-	str1.Format(_T("addr:%s,username:%s,cpp:%s,jsonid:%s"), addr, username, cpp, jsonid);
-	AfxMessageBox(str1);
-}
-#endif
 #include "afxdialogex.h"
 #include <iostream>  
 #include <string>  
