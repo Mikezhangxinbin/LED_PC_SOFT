@@ -55,6 +55,16 @@ private:
 
 
 
+typedef  struct _Led_Screen
+{
+	char IP[50];
+	unsigned int x;
+	unsigned int y;
+	unsigned char id;
+	unsigned char w;
+	unsigned char h;
+}Led_Screen;
+
 class CLed_toolDlg : public CDialog
 {
 // Construction
@@ -76,6 +86,7 @@ public:
     void Mc_onConnect(void);
 	DWORD m_dwHandle;
 	char Get_Machine_data[200];
+	Led_Screen led_sname[50];
 	char*	sname[TAG_NUM];			//in/out标签名 80
 	char*	sdbname[TAG_NUM];		//in/out数据库实例名 16
 	char*	sdbtagname[TAG_NUM];	//in/out数据库标签名 80

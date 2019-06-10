@@ -18,6 +18,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
+BOOL Debug_Statue = 0;
 char szFile[300][100];
 FILE *fp;
 CString strPORT;
@@ -143,6 +144,37 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CLed_toolDlg message handlers
 #include "ini.h"
+short __stdcall asc_hex(unsigned char *asc, unsigned char *hex, long pair_len)
+{
+	char src1, src2, factor1, factor2;
+	long len;
+	factor1 = '7';
+	factor2 = '7';
+	//_strupr( (char *)asc );
+
+	for (len = 0; len < pair_len; len++)
+	{
+		src1 = *(asc + len * 2);
+		src2 = *(asc + len * 2 + 1);
+		if ((src1 >= '0') && (src1 <= '9'))
+			factor1 = '0';
+		else if ((src1 >= 'A') && (src1 <= 'F'))
+			factor1 = '7';
+		else
+			return 1;
+		if ((src2 >= '0') && (src2 <= '9'))
+			factor2 = '0';
+		else if ((src2 >= 'A') && (src2 <= 'F'))
+			factor2 = '7';
+		else
+			return 1;
+		src1 = src1 - factor1;
+		src2 = src2 - factor2;
+		*hex++ = (src1 << 4) | src2;
+	}
+	return 0;
+}
+
 BOOL CLed_toolDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
@@ -155,19 +187,7 @@ BOOL CLed_toolDlg::OnInitDialog()
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 	//Get_Data_From_Json();
-#if 1
-	OnGetjiqima();
-	License_Enable = strcmp(Get_Machine_data,  "00E18CB63528000806E9-00000000-00000000");
-	//License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
-	if (License_Enable)
-	{
-		strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
-		AfxMessageBox(strwarning);
 
-		OnOK();
-			
-	}
-#endif
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
@@ -212,54 +232,162 @@ BOOL CLed_toolDlg::OnInitDialog()
     (_tcsrchr(szFilePath, _T('\\')))[1] = 0; 
     CString str_url =  szFilePath;
 	CString Send_temp;
+	CString info_temp;
     ConfigPathName.Format("%s\\config.ini",str_url);
 	CIni nIniParam(ConfigPathName);
-memset(sname[0],0x0,50);
-memset(sname[1],0x0,50);
-memset(sname[2],0x0,50);
-memset(sname[3],0x0,50);
-memset(sname[4],0x0,50);
-memset(sname[5],0x0,50);
-memset(sname[6], 0x0, 50);
-memset(sname[7], 0x0, 50);
-memset(sname[8], 0x0, 50);
-memset(sname[9], 0x0, 50);
+memset(led_sname[0].IP,0x0,50);
+memset(led_sname[1].IP,0x0,50);
+memset(led_sname[2].IP,0x0,50);
+memset(led_sname[3].IP,0x0,50);
+memset(led_sname[4].IP,0x0,50);
+memset(led_sname[5].IP,0x0,50);
+memset(led_sname[6].IP, 0x0, 50);
+memset(led_sname[7].IP, 0x0, 50);
+memset(led_sname[8].IP, 0x0, 50);
+memset(led_sname[9].IP, 0x0, 50);
 memset(store_id, 0x0, 100);
-	strInfo = nIniParam.GetValue("SIS_Name", "name_1", "FFFFFFFF");
-	memcpy(sname[0],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name1", "IP", "FFFFFFFF");
+	memcpy(led_sname[0].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_2", "FFFFFFFF");
-	memcpy(sname[1],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name2", "IP", "FFFFFFFF");
+	memcpy(led_sname[1].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_3", "FFFFFFFF");
-	memcpy(sname[2],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name3", "IP", "FFFFFFFF");
+	memcpy(led_sname[2].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_4", "FFFFFFFF");
-	memcpy(sname[3],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name4", "IP", "FFFFFFFF");
+	memcpy(led_sname[3].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_5", "FFFFFFFF");
-	memcpy(sname[4],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name5", "IP", "FFFFFFFF");
+	memcpy(led_sname[4].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_6", "FFFFFFFF");
-	memcpy(sname[5],strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name6", "IP", "FFFFFFFF");
+	memcpy(led_sname[5].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_7", "FFFFFFFF");
-	memcpy(sname[6], strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name7", "IP", "FFFFFFFF");
+	memcpy(led_sname[6].IP, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_8", "FFFFFFFF");
-	memcpy(sname[7], strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name8", "IP", "FFFFFFFF");
+	memcpy(led_sname[7].IP, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_9", "FFFFFFFF");
-	memcpy(sname[8], strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name9", "IP", "FFFFFFFF");
+	memcpy(led_sname[8].IP, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
 
-	strInfo = nIniParam.GetValue("SIS_Name", "name_10", "FFFFFFFF");
-	memcpy(sname[9], strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name10", "IP", "FFFFFFFF");
+	memcpy(led_sname[9].IP, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
+
+	strInfo = nIniParam.GetValue("SIS_Name1", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[0].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name2", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[1].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name3", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[2].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name4", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[3].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name5", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[4].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name6", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[5].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name7", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[6].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name8", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[7].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name9", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[8].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name10", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[9].id, strInfo.GetLength());
+
+
+	strInfo = nIniParam.GetValue("SIS_Name1", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[0].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name2", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[1].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name3", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[2].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name4", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[3].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name5", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[4].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name6", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[5].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name7", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[6].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name8", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[7].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name9", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[8].id, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name10", "ID", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[9].id, strInfo.GetLength());
+
+
+	strInfo = nIniParam.GetValue("SIS_Name1", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[0].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name2", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[1].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name3", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[2].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name4", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[3].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name5", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[4].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name6", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[5].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name7", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[6].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name8", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[7].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name9", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[8].w, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name10", "W", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[9].w, strInfo.GetLength());
+
+	strInfo = nIniParam.GetValue("SIS_Name1", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[0].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name2", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[1].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name3", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[2].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name4", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[3].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name5", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[4].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name6", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[5].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name7", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[6].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name8", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[7].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name9", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[8].h, strInfo.GetLength());
+	strInfo = nIniParam.GetValue("SIS_Name10", "H", "FFFFFFFF");
+	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[9].h, strInfo.GetLength());
 
 	strInfo = nIniParam.GetValue("StoreID", "server_ip", "FFFFFFFF");
 	memcpy(store_id, strInfo.GetBuffer(strInfo.GetLength()), strInfo.GetLength());
 
+	strInfo = nIniParam.GetValue("control", "debug", "FFFFFFFF");
+	Debug_Statue = atoi(strInfo);
 
 	::GetPrivateProfileString("UseFileName","FileName","Error",OpenFilePath.GetBuffer(MAX_PATH),MAX_PATH,ConfigPathName);
+
+
+#if 1
+	if (Debug_Statue == 0)
+	{
+		OnGetjiqima();
+		License_Enable = strcmp(Get_Machine_data, "00E18CB63528000806E9-00000000-00000000");
+		//License_Enable = strcmp(Get_Machine_data,"00E04C0741E1000206A7-00000000-00000000"); //01
+		if (License_Enable)
+		{
+
+			strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
+			AfxMessageBox(strwarning);
+		}
+
+		OnOK();
+	}
+
+#endif
 
 #if 0
   if( memcmp("Error",OpenFilePath.GetBuffer(3),3) == 0)
@@ -1086,17 +1214,17 @@ void CLed_toolDlg::OnBnClickedButton7()
 	
 //	CreateBroadCast(char *broad_ip,UINT broad_port,bx_5k_card_type card_type);
 
-	dwHand[0] = CreateClient(sname[0], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[0] = CreateClient(led_sname[0].IP, 5005, (bx_5k_card_type)led_sname[0].id, 1, 1, NULL);
 #if 1
-	dwHand[1] = CreateClient(sname[1], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[2]  = CreateClient(sname[2], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[3]  = CreateClient(sname[3], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[4]  = CreateClient(sname[4], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[5]  = CreateClient(sname[5], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[6] = CreateClient(sname[6], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[7] = CreateClient(sname[7], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[8] = CreateClient(sname[8], 5005, BX_5MK1, 1, 1, NULL);
-	dwHand[9] = CreateClient(sname[9], 5005, BX_5MK1, 1, 1, NULL);
+	dwHand[1] = CreateClient(led_sname[1].IP, 5005, (bx_5k_card_type)led_sname[1].id, 1, 1, NULL);
+	dwHand[2]  = CreateClient(led_sname[2].IP, 5005, (bx_5k_card_type)led_sname[2].id, 1, 1, NULL);
+	dwHand[3]  = CreateClient(led_sname[3].IP, 5005, (bx_5k_card_type)led_sname[3].id, 1, 1, NULL);
+	dwHand[4]  = CreateClient(led_sname[4].IP, 5005, (bx_5k_card_type)led_sname[4].id, 1, 1, NULL);
+	dwHand[5]  = CreateClient(led_sname[5].IP, 5005, (bx_5k_card_type)led_sname[5].id, 1, 1, NULL);
+	dwHand[6] = CreateClient(led_sname[6].IP, 5005, (bx_5k_card_type)led_sname[6].id, 1, 1, NULL);
+	dwHand[7] = CreateClient(led_sname[7].IP, 5005, (bx_5k_card_type)led_sname[7].id, 1, 1, NULL);
+	dwHand[8] = CreateClient(led_sname[8].IP, 5005, (bx_5k_card_type)led_sname[8].id, 1, 1, NULL);
+	dwHand[9] = CreateClient(led_sname[9].IP, 5005, (bx_5k_card_type)led_sname[9].id, 1, 1, NULL);
 #endif
 	if (dwHand[0] & dwHand[1] & dwHand[2] & dwHand[3] & dwHand[4] & dwHand[5] & dwHand[6] & dwHand[7] & dwHand[8] & dwHand[9])
 	{
@@ -1108,7 +1236,7 @@ void CLed_toolDlg::OnBnClickedButton7()
 		led_error = 1;
 		led_Status.Format("12001-%X,%X,%X,%X,%X,%X,%X,%X,%X,%X\r\n", dwHand[0], dwHand[1], dwHand[2], dwHand[3], dwHand[4], dwHand[5], dwHand[6], dwHand[7], dwHand[8], dwHand[9]);
 	}
-	//AfxMessageBox(prompt);
+	if(Debug_Statue == 0)AfxMessageBox(led_Status);
 //	SetTimer(1, 5000, NULL);
 
 	 //CON_Reset(dwHand);
@@ -1424,8 +1552,8 @@ void CLed_toolDlg::onWebMessage(std::string strMessage)
 			my_area.AreaX = 0;
 			my_area.AreaY = 0;
 			my_area.AreaType = 0x07;
-			my_area.AreaWidth = 24;
-			my_area.AreaHeight = 64;
+			my_area.AreaWidth = led_sname[led_id].w;//    24;
+			my_area.AreaHeight = led_sname[led_id].h;// 64;
 			my_area.Lines_sizes = 0;
 
 			my_area.Reserved[0] = 1;
@@ -1628,11 +1756,7 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 
 		}
 	}
-<<<<<<< HEAD
 	if (nIDEvent ==1)//Time1 deal
-=======
-	if (nIDEvent == 1)//Time1 deal
->>>>>>> 50a751dfa9b963d842705431548dc263c3394b53
 	{
 		if (m_bConnect)
 		{
@@ -1642,13 +1766,6 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 			std::string input = s_char;
 			endpoint.send(input);
 
-<<<<<<< HEAD
-
-
-=======
-
-
->>>>>>> 50a751dfa9b963d842705431548dc263c3394b53
 		}
 
 	}

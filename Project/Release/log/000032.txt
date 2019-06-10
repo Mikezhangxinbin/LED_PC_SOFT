@@ -4,3 +4,13 @@ ExeFileName:C:\xb_zhang\led_tool\2\LED_PC_SOFT\Project\Release\led_tool.exe
 ------------------------------------------------------------
 2019-05-31 17:10:37	[GT_MEMORY]free_thread_memory_pool thread:18788
 2019-05-31 17:10:37	[GT_MEMORY]free_thread_memory_pool thread:11240
+2019-05-31 17:13:07	[GT_MEMORY]free_thread_memory_pool thread:11152
+2019-05-31 17:14:38	[GT_MEMORY]free_thread_memory_pool thread:13836
+2019-05-31 17:20:13	[GT_MEMORY]free_thread_memory_pool thread:22044
+2019-05-31 17:34:44	[GT_MEMORY]free_thread_memory_pool thread:4636
+2019-06-03 09:26:11	[GT_MEMORY]free_thread_memory_pool thread:14148
+2019-06-03 10:26:29	[GT_MEMORY]free_thread_memory_pool thread:22032
+2019-06-03 10:56:38	[GT_MEMORY]free_thread_memory_pool thread:21524
+2019-06-03 11:41:18	[GT_MEMORY]free_thread_memory_pool thread:20384
+2019-06-03 14:37:11	[GT_MEMORY]free_thread_memory_pool thread:12868
+2019-06-04 16:46:31	[GT_MEMORY]free_thread_memory_pool thread:15532
