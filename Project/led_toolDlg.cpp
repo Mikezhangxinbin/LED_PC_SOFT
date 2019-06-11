@@ -298,27 +298,6 @@ memset(store_id, 0x0, 100);
 	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[9].id, strInfo.GetLength());
 
 
-	strInfo = nIniParam.GetValue("SIS_Name1", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[0].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name2", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[1].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name3", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[2].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name4", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[3].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name5", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[4].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name6", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[5].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name7", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[6].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name8", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[7].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name9", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[8].id, strInfo.GetLength());
-	strInfo = nIniParam.GetValue("SIS_Name10", "ID", "FFFFFFFF");
-	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[9].id, strInfo.GetLength());
-
 
 	strInfo = nIniParam.GetValue("SIS_Name1", "W", "FFFFFFFF");
 	asc_hex((unsigned char*)strInfo.GetBuffer(strInfo.GetLength()), (unsigned char*)&led_sname[0].w, strInfo.GetLength());
@@ -426,9 +405,12 @@ memset(store_id, 0x0, 100);
 	//hThreadEvent1=CreateThread(NULL,0,
 						//  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
 						//  NULL,0,NULL);  //创建事件线程
-     OnBnClickedButton7();
-	SetTimer(2,1000,NULL);
-	SetTimer(1, 30000, NULL);
+  if (Debug_Statue == 0)
+  {
+	  OnBnClickedButton7();
+	  SetTimer(2, 1000, NULL);
+	  SetTimer(1, 30000, NULL);
+  }
 	
 	//CloseHandle(hThreadEvent1);
 
@@ -1236,7 +1218,51 @@ void CLed_toolDlg::OnBnClickedButton7()
 		led_error = 1;
 		led_Status.Format("12001-%X,%X,%X,%X,%X,%X,%X,%X,%X,%X\r\n", dwHand[0], dwHand[1], dwHand[2], dwHand[3], dwHand[4], dwHand[5], dwHand[6], dwHand[7], dwHand[8], dwHand[9]);
 	}
-	if(Debug_Statue == 0)AfxMessageBox(led_Status);
+	CString Test_Value;
+	bx_5k_area_header my_area;
+	if (Debug_Statue == 1)
+	{
+		AfxMessageBox(led_Status);
+			int index = 0;
+			for (int led_id = 0; led_id < 10; led_id++)
+			{
+
+				if (dwHand[led_id] != 0)
+				{
+					Test_Value.Format("IP: %s", led_sname[led_id].IP);
+
+					my_area.AreaX = 0;
+					my_area.AreaY = 0;
+					my_area.AreaType = 0x07;
+					my_area.AreaWidth = led_sname[led_id].w;//    24;
+					my_area.AreaHeight = led_sname[led_id].h;// 64;
+					my_area.Lines_sizes = 0;
+
+					my_area.Reserved[0] = 1;
+					my_area.Reserved[1] = 1;
+					my_area.Reserved[2] = 1;
+
+					my_area.DynamicAreaLoc = 0;   //定义一个动态
+					my_area.RunMode = 0;//RunMode_list[rl];
+
+					my_area.Timeout = 10;
+					my_area.SingleLine = 2;
+					my_area.NewLine = 2;
+					my_area.DisplayMode = 1;
+					my_area.ExitMode = 0x00;
+					my_area.Speed = 0;
+					my_area.StayTime = 0;
+					my_area.DataLen = Test_Value.GetLength();// tmp.GetLength();// strlen(sname[i]);
+
+
+
+					SCREEN_SendDynamicArea(dwHand[led_id], my_area, Test_Value.GetLength(), (BYTE*)Test_Value.GetBuffer(Test_Value.GetLength()));
+					//SCREEN_SendDynamicArea(dwHand[i], my_area, strlen(sname[i]), (BYTE*)sname[i]);
+
+				}
+			}
+
+	}
 //	SetTimer(1, 5000, NULL);
 
 	 //CON_Reset(dwHand);

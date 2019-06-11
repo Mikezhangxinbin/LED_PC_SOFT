@@ -48,7 +48,8 @@
     <OutDir>.\Release\</OutDir>
     <IntDir>.\Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(IntDir)..\..\websocketpp-master;$(IncludePath)</IncludePath>
+    <IncludePath>$(IntDir)..\..\websocketpp-master;C:\Project\boost_1_67_0\boost_1_67_0;$(IncludePath)</IncludePath>
+    <LibraryWPath>C:\Project\boost_1_67_0\boost_1_67_0\stage\lib;$(LibraryWPath)</LibraryWPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>.\Debug\</OutDir>
@@ -91,7 +92,7 @@
       <AdditionalDependencies>freetype248ST_D.lib;dbpapi.lib;McControl.lib;Led5kSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/led_tool.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(IntDir)..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(IntDir)..\..\lib;C:\Project\boost_1_67_0\boost_1_67_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ProgramDatabaseFile>.\Release/led_tool.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
