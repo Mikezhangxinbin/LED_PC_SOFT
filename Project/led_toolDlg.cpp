@@ -33,7 +33,19 @@ BOOL DL_FLAG =0;
 BOOL dl =0;
 BOOL dl_state =0;
 DWORD ThreadProcEvent1(LPVOID pParam);
+DWORD ThreadProcEvent_LED1(LPVOID pParam);
+DWORD ThreadProcEvent_LED2(LPVOID pParam);
+DWORD ThreadProcEvent_LED3(LPVOID pParam);
+DWORD ThreadProcEvent_LED4(LPVOID pParam);
+DWORD ThreadProcEvent_LED5(LPVOID pParam);
+DWORD ThreadProcEvent_LED6(LPVOID pParam);
+DWORD ThreadProcEvent_LED7(LPVOID pParam);
+DWORD ThreadProcEvent_LED8(LPVOID pParam);
+DWORD ThreadProcEvent_LED9(LPVOID pParam);
+DWORD ThreadProcEvent_LED10(LPVOID pParam);
 
+
+char*	sname[TAG_NUM];			//in/out标签名 80
 CString Sis_szVal_1;
 CString Sis_szVal_2;
 CString Sis_szVal_3;
@@ -101,7 +113,7 @@ CLed_toolDlg::CLed_toolDlg(CWnd* pParent /*=NULL*/)
 	m_bConnect = FALSE;
 	for(int j = 0 ; j < TAG_NUM ; j ++)
 	{
-		sname[j] = new char[80];
+		//sname[j] = new char[80];
 		sdbname[j] = new char[16];
 		sdbtagname[j] = new char[80];
 		sdes[j] = new char[80];
@@ -370,6 +382,12 @@ memset(store_id, 0x0, 100);
 		
 	}
 
+	for (int j = 0; j < TAG_NUM; j++)
+	{
+		sname[j] = new char[80];
+	
+	}
+
 #endif
 
 #if 0
@@ -406,9 +424,37 @@ memset(store_id, 0x0, 100);
 
 //Connect();
 
-	//hThreadEvent1=CreateThread(NULL,0,
-						//  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
-						//  NULL,0,NULL);  //´´½¨ÊÂ¼þÏß³Ì
+	hThreadEvent1=CreateThread(NULL,0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED1,
+		NULL,0,NULL);  
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED2,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED3,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED4,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED5,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED6,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED7,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED8,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED9,
+		NULL, 0, NULL);
+	hThreadEvent1 = CreateThread(NULL, 0,
+		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED10,
+		NULL, 0, NULL);
+	
   if (Debug_Statue == 0)
   {
 	  OnBnClickedButton7();
@@ -666,7 +712,11 @@ DWORD ThreadProcEvent1(LPVOID pParam)
 	tempBuf[1] ="ÇëÇóÖÐ...";
 	tempBuf[2] ="ÇëÇóÖÐ...";
 
+	while (1)
+	{
 
+		Sleep(5);
+	}
 	
 	while(1)
 	{
@@ -1226,7 +1276,7 @@ void CLed_toolDlg::OnBnClickedButton7()
 		led_Status.Format("12001-%X,%X,%X,%X,%X,%X,%X,%X,%X,%X\r\n", dwHand[0], dwHand[1], dwHand[2], dwHand[3], dwHand[4], dwHand[5], dwHand[6], dwHand[7], dwHand[8], dwHand[9]);
 	}
 	
-	if (1)//Debug_Statue == 1)
+	if (Debug_Statue == 1)
 	{
 		//AfxMessageBox(led_Status);
 			int index = 0;
@@ -1560,11 +1610,13 @@ void CLed_toolDlg::onWebClose(int nCode, std::string strCode, std::string strRea
 }
 int connect_web_ok = 0;
 char R_temp[400];
+int global_led_id = 10;
+int led_ready = 10;
 void CLed_toolDlg::onWebMessage(std::string strMessage)
 {
 	//AfxMessageBox((char*)strMessage.c_str());
 	int ret;
-	bx_5k_area_header my_area;
+	
 	connect_web_ok = 1;
 	strMessage = TranslateUTF8ToGB((char*)strMessage.c_str(), strMessage.length());
 	
@@ -1584,7 +1636,7 @@ void CLed_toolDlg::onWebMessage(std::string strMessage)
 	//AfxMessageBox(m_strShowMsg);
 	m_EditView.LineScroll(m_EditView.GetLineCount(), 0);
 
-	int led_id = 0;
+	
 	if (m_bConnect)
 	{
 	
@@ -1594,22 +1646,22 @@ void CLed_toolDlg::onWebMessage(std::string strMessage)
 		//Name_5
 		if (R_temp[0] == 'N'&R_temp[1] == 'a')
 		{
-			if (R_temp[5] >= '0'&&R_temp[5] <= '9')led_id = R_temp[5] - '0';
-			else led_id = 0;
+			if (R_temp[5] >= '0'&&R_temp[5] <= '9') global_led_id = R_temp[5] - '0';
+			else global_led_id = 10;
 
 			memcpy(R_temp, strMessage.c_str(), strMessage.length());
-			memset(sname[led_id], 0x0, 200);
-			memcpy(sname[led_id], &R_temp[7], strMessage.length() - 7);
+			memset(sname[global_led_id], 0x0, 200);
+			memcpy(sname[global_led_id], &R_temp[7], strMessage.length() - 7);
 
-			if (dwHand[led_id] != 0)
+			//if (dwHand[global_led_id] != 0)
 			{
 				//tmp.Format("        %s", sname[i]);
 
 				my_area.AreaX = 0;
 				my_area.AreaY = 0;
 				my_area.AreaType = 0x07;
-				my_area.AreaWidth = led_sname[led_id].w;//    24;
-				my_area.AreaHeight = led_sname[led_id].h;// 64;
+				my_area.AreaWidth = led_sname[global_led_id].w;//    24;
+				my_area.AreaHeight = led_sname[global_led_id].h;// 64;
 				my_area.Lines_sizes = 0;
 
 				my_area.Reserved[0] = 0;
@@ -1628,12 +1680,13 @@ void CLed_toolDlg::onWebMessage(std::string strMessage)
 				my_area.StayTime = 0;
 				my_area.DataLen = strMessage.length() - 7;// tmp.GetLength();// strlen(sname[i]);
 
+				led_ready = global_led_id;
 
 
-				ret = SCREEN_SendDynamicArea(dwHand[led_id], my_area, strMessage.length() - 7, (BYTE*)sname[led_id]);
-				if (ret != 0) AfxMessageBox("error:\r\n");
+				//ret = SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, strMessage.length() - 7, (BYTE*)sname[global_led_id]);
+				//if (ret != 0) AfxMessageBox("error:\r\n");
 
-				//SCREEN_SendDynamicArea(dwHand[i], my_area, strlen(sname[i]), (BYTE*)sname[i]);
+				
 
 			}
 		}
@@ -1794,4 +1847,159 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 	}
 
 
+}
+
+
+DWORD ThreadProcEvent_LED1(LPVOID pParam)
+{
+
+
+	while (1)
+	{
+		if (led_ready == 0)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED2(LPVOID pParam)
+{
+
+
+	while (1)
+	{
+		if (led_ready == 1)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED3(LPVOID pParam)
+{
+
+
+	while (1)
+	{
+		if (led_ready == 2)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED4(LPVOID pParam)
+{
+
+
+	while (1)
+	{
+		if (led_ready == 3)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED5(LPVOID pParam)
+{
+
+
+	while (1)
+	{
+		if (led_ready == 4)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED6(LPVOID pParam)
+{
+
+
+	while (1)
+	{
+		if (led_ready == 5)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED7(LPVOID pParam)
+{
+
+
+
+	while (1)
+	{
+		if (led_ready == 6)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED8(LPVOID pParam)
+{
+	
+
+
+	while (1)
+	{
+		if (led_ready == 7)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED9(LPVOID pParam)
+{
+	
+
+
+	while (1)
+	{
+		if (led_ready == 8)
+		{
+			if (dwHand[global_led_id] != 0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
+}
+
+DWORD ThreadProcEvent_LED10(LPVOID pParam)
+{
+
+
+
+	while (1)
+	{
+		if(led_ready ==9)
+		{
+			if(dwHand[global_led_id]!=0) SCREEN_SendDynamicArea(dwHand[global_led_id], my_area, my_area.DataLen, (BYTE*)sname[global_led_id]);
+			led_ready = 10;
+		}
+		Sleep(5);
+	}
 }
