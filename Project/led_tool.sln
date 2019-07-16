@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "led_tool", "led_tool.vcxproj", "{F2B15871-A729-46BC-A92F-8CC5C0FCA4CD}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_LedTool", "..\Setup_LedTool\Setup_LedTool.vdproj", "{0E6590C0-743D-4496-BA5E-452D2299AE2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,8 @@ Global
 		{F2B15871-A729-46BC-A92F-8CC5C0FCA4CD}.Debug|Win32.Build.0 = Debug|Win32
 		{F2B15871-A729-46BC-A92F-8CC5C0FCA4CD}.Release|Win32.ActiveCfg = Release|Win32
 		{F2B15871-A729-46BC-A92F-8CC5C0FCA4CD}.Release|Win32.Build.0 = Release|Win32
+		{0E6590C0-743D-4496-BA5E-452D2299AE2C}.Debug|Win32.ActiveCfg = Debug
+		{0E6590C0-743D-4496-BA5E-452D2299AE2C}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

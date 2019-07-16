@@ -3,3 +3,11 @@
 ExeFileName:C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\Release\led_tool.exe
 ------------------------------------------------------------
 2019-07-04 16:24:54	[GT_MEMORY]free_thread_memory_pool thread:2188
+2019-07-04 16:25:19	[GT_MEMORY]free_thread_memory_pool thread:7872
+2019-07-04 16:26:23	[GT_MEMORY]free_thread_memory_pool thread:26340
+2019-07-04 16:28:51	[GT_MEMORY]free_thread_memory_pool thread:15068
+2019-07-04 16:28:51	[GT_MEMORY]free_thread_memory_pool thread:25360
+------------------------------------------------------------
+ExeFileName:C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\Release\led_tool.exe
+ÖÕÖ¹¼ÇÂ¼Ê±¼ä:2019-07-04 16:28:51
+------------------------------------------------------------

@@ -1,45 +1,172 @@
-﻿  StdAfx.cpp
-  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
-  ini.cpp
-  led_tool.cpp
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tool.cpp(59): warning C4996: 'CWinApp::Enable3dControlsStatic': CWinApp::Enable3dControlsStatic is no longer needed. You should remove this call.
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\atlmfc\include\afxwin2.inl(1077): note: see declaration of 'CWinApp::Enable3dControlsStatic'
-  led_toolDlg.cpp
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(644): warning C4102: 'RETURN': unreferenced label
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(730): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  led_toolDlg.cpp
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(508): warning C4566: character represented by universal-character-name '\u00B6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(508): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(508): warning C4566: character represented by universal-character-name '\u00DC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(526): warning C4566: character represented by universal-character-name '\u00CE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(526): warning C4566: character represented by universal-character-name '\u00C4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(526): warning C4566: character represented by universal-character-name '\u00BC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(526): warning C4566: character represented by universal-character-name '\u00FE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(646): warning C4102: 'RETURN': unreferenced label
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(665): warning C4566: character represented by universal-character-name '\u00C7' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(665): warning C4566: character represented by universal-character-name '\u00EB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(665): warning C4566: character represented by universal-character-name '\u00D6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(665): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(666): warning C4566: character represented by universal-character-name '\u00C7' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(666): warning C4566: character represented by universal-character-name '\u00EB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(666): warning C4566: character represented by universal-character-name '\u00D6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(666): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(667): warning C4566: character represented by universal-character-name '\u00C7' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(667): warning C4566: character represented by universal-character-name '\u00EB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(667): warning C4566: character represented by universal-character-name '\u00D6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(667): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00AC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00BD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00D3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00CF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00D4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00BE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(676): warning C4566: character represented by universal-character-name '\u00C6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(694): warning C4566: character represented by universal-character-name '\u00B3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(694): warning C4566: character represented by universal-character-name '\u00AC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(694): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(700): warning C4566: character represented by universal-character-name '\u00B3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(700): warning C4566: character represented by universal-character-name '\u00C9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(700): warning C4566: character represented by universal-character-name '\u00B9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(700): warning C4566: character represented by universal-character-name '\u00A6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00AC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00BD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00D3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00CF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00D4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00BE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(705): warning C4566: character represented by universal-character-name '\u00C6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(732): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(731): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(733): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(742): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(744): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(743): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(745): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(744): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(746): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(779): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(780): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
 c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(781): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1011): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(782): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1372): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(783): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1377): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00AC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00BD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00D3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00B5' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00C4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00FE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00CE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00F1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(808): warning C4566: character represented by universal-character-name '\u00C6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(898): warning C4566: character represented by universal-character-name '\u00D1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(898): warning C4566: character represented by universal-character-name '\u00B9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(901): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(901): warning C4566: character represented by universal-character-name '\u00A6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(904): warning C4566: character represented by universal-character-name '\u00B9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(904): warning C4566: character represented by universal-character-name '\u00A9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(904): warning C4566: character represented by universal-character-name '\u00C6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(904): warning C4566: character represented by universal-character-name '\u00FB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(904): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(904): warning C4566: character represented by universal-character-name '\u00BF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(907): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(907): warning C4566: character represented by universal-character-name '\u00DB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(907): warning C4566: character represented by universal-character-name '\u00C6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(907): warning C4566: character represented by universal-character-name '\u00FB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(907): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(907): warning C4566: character represented by universal-character-name '\u00BF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00BC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00C6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00BB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00AE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00C8' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00CE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00F1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00CC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4566: character represented by universal-character-name '\u00D1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1013): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00C3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00BB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00D5' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00D2' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00B5' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00BD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00D6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00B4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00B3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00CC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00A3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00AC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00D4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00B6' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00AF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00CB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1081): warning C4566: character represented by universal-character-name '\u00DC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1374): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1379): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1608): warning C4267: 'argument': conversion from 'size_t' to 'USHORT', possible loss of data
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1674): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00C7' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00EB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00CF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00C8' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00E4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00FB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00A2' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00D4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00D9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00BD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00F8' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00CB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1501): warning C4566: character represented by universal-character-name '\u00CD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00C7' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00EB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00CF' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00C8' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00BD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00F8' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00D0' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00C1' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00AC' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00D3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00BA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00D4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00D9' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00B4' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00CE' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00B3' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00A2' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00CA' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00CB' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1515): warning C4566: character represented by universal-character-name '\u00CD' cannot be represented in the current code page (936)
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1595): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1633): warning C4267: 'argument': conversion from 'size_t' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1662): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1680): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1668): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1691): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1679): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1728): warning C4018: '<': signed/unsigned mismatch
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1747): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1716): warning C4018: '<': signed/unsigned mismatch
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1735): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1769): warning C4101: 'len': unreferenced local variable
-c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1771): warning C4101: 'my_area': unreferenced local variable
-  websocket_endpoint.cpp
-  Generating Code...
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1757): warning C4101: 'len': unreferenced local variable
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1759): warning C4101: 'my_area': unreferenced local variable
   led_tool.vcxproj -> C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\.\Release\led_tool.exe

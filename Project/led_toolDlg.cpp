@@ -98,7 +98,7 @@ CLed_toolDlg::CLed_toolDlg(CWnd* pParent /*=NULL*/)
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_dwHandle = NULL;
-
+	m_bConnect = FALSE;
 	for(int j = 0 ; j < TAG_NUM ; j ++)
 	{
 		sname[j] = new char[80];
@@ -354,18 +354,20 @@ memset(store_id, 0x0, 100);
 	if (Debug_Statue == 0)
 	{
 		OnGetjiqima();
+		//License_Enable = strcmp(Get_Machine_data, "B831B5A0F8DA000806EA-00000000-00000000");
 		//License_Enable = strcmp(Get_Machine_data, "00E18CB63528000806E9-00000000-00000000");
-		//License_Enable = strcmp(Get_Machine_data, "00E04C0741E1000206A7-00000000-00000000"); //01 广州
-		//  License_Enable = strcmp(Get_Machine_data, "00E04C680B8B000306A9-00000000-00000000"); //02 天津
-		  License_Enable = strcmp(Get_Machine_data, "00F1F523EA7E000206A7-00000000-00000000"); //03 深圳
+		License_Enable = strcmp(Get_Machine_data, "00E04C0741E1000206A7-00000000-00000000"); //01 广州
+		 // License_Enable = strcmp(Get_Machine_data, "00E04C680B8B000306A9-00000000-00000000"); //02 天津
+		//  License_Enable = strcmp(Get_Machine_data, "00F1F523EA7E000206A7-00000000-00000000"); //03 深圳
 		if (License_Enable)
 		{
 
 			strwarning.Format("Warning:Soft Have error License\n:%s", Get_Machine_data);
 			AfxMessageBox(strwarning);
+			OnOK();
 		}
 
-		OnOK();
+		
 	}
 
 #endif
@@ -410,7 +412,7 @@ memset(store_id, 0x0, 100);
   if (Debug_Statue == 0)
   {
 	  OnBnClickedButton7();
-	  SetTimer(2, 1000, NULL);
+	  SetTimer(2, 5000, NULL);
 	  SetTimer(1, 30000, NULL);
   }
 	
@@ -1004,10 +1006,10 @@ void CLed_toolDlg::OnClose()
 	NOTIFYICONDATA   nid; 
 	nid.cbSize=(DWORD)sizeof(NOTIFYICONDATA); 
 	nid.hWnd=this-> m_hWnd; 
-	nid.uID=IDR_MAINFRAME; 
+	nid.uID= IDR_MAINFRAME;
 	nid.uFlags=NIF_ICON|NIF_MESSAGE|NIF_TIP   ; 
 	nid.uCallbackMessage=WM_SHOWTASK;//×Ô¶¨ÒåµÄÏûÏ¢Ãû³Æ 
-	nid.hIcon=LoadIcon(AfxGetInstanceHandle(),MAKEINTRESOURCE(IDR_MAINFRAME)); 
+	nid.hIcon=LoadIcon(AfxGetInstanceHandle(),MAKEINTRESOURCE(IDR_MAINFRAME));
 	strcpy(nid.szTip, "¼Æ»®ÈÎÎñÌáÐÑ ");//ÐÅÏ¢ÌáÊ¾ÌõÎª¡°¼Æ»®ÈÎÎñÌáÐÑ¡± 
 	Shell_NotifyIcon(NIM_ADD,&nid);//ÔÚÍÐÅÌÇøÌí¼ÓÍ¼±ê 
 	ShowWindow(SW_HIDE);//Òþ²ØÖ÷´°¿Ú 
@@ -1018,7 +1020,7 @@ void CLed_toolDlg::OnClose()
  LRESULT   CLed_toolDlg::onShowTask(WPARAM   wParam,LPARAM   lParam) 
 //wParam½ÓÊÕµÄÊÇÍ¼±êµÄID£¬¶ølParam½ÓÊÕµÄÊÇÊó±êµÄÐÐÎª 
 { 
-    if(wParam!=IDR_MAINFRAME) 
+    if(wParam!= IDR_MAINFRAME)
     return   1; 
     switch(lParam) 
     { 
@@ -1224,9 +1226,9 @@ void CLed_toolDlg::OnBnClickedButton7()
 		led_Status.Format("12001-%X,%X,%X,%X,%X,%X,%X,%X,%X,%X\r\n", dwHand[0], dwHand[1], dwHand[2], dwHand[3], dwHand[4], dwHand[5], dwHand[6], dwHand[7], dwHand[8], dwHand[9]);
 	}
 	
-	if (Debug_Statue == 1)
+	if (1)//Debug_Statue == 1)
 	{
-		AfxMessageBox(led_Status);
+		//AfxMessageBox(led_Status);
 			int index = 0;
 			for (int led_id = 0; led_id < 10; led_id++)
 			{
@@ -1557,104 +1559,90 @@ void CLed_toolDlg::onWebClose(int nCode, std::string strCode, std::string strRea
 	}
 }
 int connect_web_ok = 0;
+char R_temp[400];
 void CLed_toolDlg::onWebMessage(std::string strMessage)
 {
 	//AfxMessageBox((char*)strMessage.c_str());
+	int ret;
 	bx_5k_area_header my_area;
 	connect_web_ok = 1;
 	strMessage = TranslateUTF8ToGB((char*)strMessage.c_str(), strMessage.length());
-	char R_temp[200];
+	
+
+
+	m_strShowMsg += CString(strMessage.c_str()) + L"\n";
+	if (m_strShowMsg.GetLength() > 1024000 * 5)
+	{
+		int nPos = m_strShowMsg.Find(CString("\n"), 0);
+		if (nPos > 0)
+		{
+			m_strShowMsg.Delete(0, nPos + 2);
+		};
+
+	}
+	SetDlgItemText(IDC_UserID, m_strShowMsg);
+	//AfxMessageBox(m_strShowMsg);
+	m_EditView.LineScroll(m_EditView.GetLineCount(), 0);
+
 	int led_id = 0;
 	if (m_bConnect)
 	{
 	
 		int index = 0;
-		memset(R_temp, 0x0, 200);
+		memset(R_temp, 0x0, 400);
 		memcpy(R_temp, strMessage.c_str(), strMessage.length());
-		led_id = R_temp[5]-'0';
-		memcpy(R_temp, strMessage.c_str(), strMessage.length());
-		memset(sname[led_id], 0x0, 200);
-		memcpy(sname[led_id], &R_temp[7], strMessage.length() - 7);
-
-		if (dwHand[led_id] != 0)
+		//Name_5
+		if (R_temp[0] == 'N'&R_temp[1] == 'a')
 		{
-			//tmp.Format("        %s", sname[i]);
+			if (R_temp[5] >= '0'&&R_temp[5] <= '9')led_id = R_temp[5] - '0';
+			else led_id = 0;
 
-			my_area.AreaX = 0;
-			my_area.AreaY = 0;
-			my_area.AreaType = 0x07;
-			my_area.AreaWidth = led_sname[led_id].w;//    24;
-			my_area.AreaHeight = led_sname[led_id].h;// 64;
-			my_area.Lines_sizes = 0;
+			memcpy(R_temp, strMessage.c_str(), strMessage.length());
+			memset(sname[led_id], 0x0, 200);
+			memcpy(sname[led_id], &R_temp[7], strMessage.length() - 7);
 
-			my_area.Reserved[0] = 0;
-			my_area.Reserved[1] = 0;
-			my_area.Reserved[2] = 0;
-
-			my_area.DynamicAreaLoc = 0;   //¶¨ÒåÒ»¸ö¶¯Ì¬
-			my_area.RunMode = 0;//RunMode_list[rl];
-
-			my_area.Timeout = 10;
-			my_area.SingleLine = 2;
-			my_area.NewLine = 2;
-			my_area.DisplayMode = 1;
-			my_area.ExitMode = 0x00;
-			my_area.Speed = 0;
-			my_area.StayTime = 0;
-			my_area.DataLen = strMessage.length() - 7;// tmp.GetLength();// strlen(sname[i]);
-
-
-
-			SCREEN_SendDynamicArea(dwHand[led_id], my_area, strMessage.length() - 7, (BYTE*)sname[led_id]);
-			//SCREEN_SendDynamicArea(dwHand[i], my_area, strlen(sname[i]), (BYTE*)sname[i]);
-
-	}
-
-
-
-#if 0
-		if (!strMessage.empty())
-		{
-			while ((index = strMessage.find(' ', index)) != std::string::npos)
+			if (dwHand[led_id] != 0)
 			{
-				strMessage.erase(index, 1);
-			}
-		}
-#endif
+				//tmp.Format("        %s", sname[i]);
 
-		index = 0;
-		if (!strMessage.empty())
-		{
-			while ((index = strMessage.find('\t', index)) != std::string::npos)
-			{
-				strMessage.erase(index, 1);
-			}
-		}
+				my_area.AreaX = 0;
+				my_area.AreaY = 0;
+				my_area.AreaType = 0x07;
+				my_area.AreaWidth = led_sname[led_id].w;//    24;
+				my_area.AreaHeight = led_sname[led_id].h;// 64;
+				my_area.Lines_sizes = 0;
 
-		index = 0;
-		if (!strMessage.empty())
-		{
-			while ((index = strMessage.find('\n', index)) != std::string::npos)
-			{
-				strMessage.erase(index, 1);
+				my_area.Reserved[0] = 0;
+				my_area.Reserved[1] = 0;
+				my_area.Reserved[2] = 0;
+
+				my_area.DynamicAreaLoc = 0;   //¶¨ÒåÒ»¸ö¶¯Ì¬
+				my_area.RunMode = 0;//RunMode_list[rl];
+
+				my_area.Timeout = 1;
+				my_area.SingleLine = 2;
+				my_area.NewLine = 2;
+				my_area.DisplayMode = 1;
+				my_area.ExitMode = 0x00;
+				my_area.Speed = 0;
+				my_area.StayTime = 0;
+				my_area.DataLen = strMessage.length() - 7;// tmp.GetLength();// strlen(sname[i]);
+
+
+
+				ret = SCREEN_SendDynamicArea(dwHand[led_id], my_area, strMessage.length() - 7, (BYTE*)sname[led_id]);
+				if (ret != 0) AfxMessageBox("error:\r\n");
+
+				//SCREEN_SendDynamicArea(dwHand[i], my_area, strlen(sname[i]), (BYTE*)sname[i]);
+
 			}
 		}
 
 
-		m_strShowMsg += CString(strMessage.c_str()) + L"\r\n";
-		if (m_strShowMsg.GetLength() > 1024000 * 5)
-		{
-			int nPos = m_strShowMsg.Find(CString("\r\n"), 0);
-			if (nPos > 0)
-			{
-				m_strShowMsg.Delete(0, nPos + 2);
-			};
 
-		}
-		SetDlgItemText(IDC_UserID, m_strShowMsg);
-		//AfxMessageBox(m_strShowMsg);
-		m_EditView.LineScroll(m_EditView.GetLineCount(), 0);
 
+
+		
 
 	}
 }
@@ -1782,7 +1770,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 				//std::string input = s_char;
 			Sleep(1000);
 			//endpoint.send(input);
-			if (led_error) endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
+			if (led_error)
+			{
+				//led_error = 0;
+				endpoint.send(led_Status.GetBuffer(led_Status.GetLength()));
+			}
 
 
 		}

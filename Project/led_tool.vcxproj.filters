@@ -66,10 +66,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\icon1.ico">
+    <Image Include="res\logo2.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\led_tool.ico">
+    <Image Include="Icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo1.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -1,0 +1,5 @@
+﻿1>------ Rebuild All started: Project: led_tool, Configuration: Release Win32 ------
+1>C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\project\xb_zhang\pc_tool\led_pc_soft\project\release\led_tool.pch' because it is being used by another process.
+1>C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(310,5): error MSB3061: Unable to delete file ".\Release/led_tool.pch". The process cannot access the file 'C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\Release\led_tool.pch' because it is being used by another process.
+1>Done building project "led_tool.vcxproj" -- FAILED.
+========== Rebuild All: 0 succeeded, 1 failed, 0 skipped ==========

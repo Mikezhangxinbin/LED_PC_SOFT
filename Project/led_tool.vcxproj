@@ -178,8 +178,9 @@
     <ClInclude Include="websocket_endpoint.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\icon1.ico" />
-    <Image Include="res\led_tool.ico" />
+    <Image Include="Icon.ico" />
+    <Image Include="res\logo1.ico" />
+    <Image Include="res\logo2.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\led_tool.rc2" />
