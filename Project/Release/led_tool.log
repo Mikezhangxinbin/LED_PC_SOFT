@@ -1,1 +1,49 @@
-﻿  led_tool.vcxproj -> C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\.\Release\led_tool.exe
+﻿  led_toolDlg.cpp
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(524): warning C4101: 'hBmp': unreferenced local variable
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(723): warning C4102: 'RETURN': unreferenced label
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(813): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(814): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(825): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(826): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(827): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(862): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(863): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(864): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1094): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1488): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1493): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: see declaration of 'sprintf'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1711): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1682): warning C4101: 'ret': unreferenced local variable
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1779): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1785): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1796): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1833): warning C4018: '<': signed/unsigned mismatch
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1852): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1874): warning C4101: 'len': unreferenced local variable
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1876): warning C4101: 'my_area': unreferenced local variable
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1926): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1941): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1956): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1971): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(1986): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(2001): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(2017): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(2033): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(2049): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+c:\project\xb_zhang\pc_tool\led_pc_soft\project\led_tooldlg.cpp(2065): warning C4244: 'argument': conversion from 'DWORD' to 'USHORT', possible loss of data
+  led_tool.vcxproj -> C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\.\Release\led_tool.exe

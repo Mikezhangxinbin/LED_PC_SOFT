@@ -131,7 +131,7 @@ void CLed_toolDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COMBO2, m_Obj_Chrct);
 	DDX_Control(pDX, IDC_BUTTON2, m_login);
 	DDX_Control(pDX, IDC_COMBO1, m_ctrlPort);
-	DDX_Control(pDX, IDC_STATIC_PICTURE, m_jzmPicture);
+
 	DDX_Text(pDX, IDC_UserID, m_statedisplay);
 	DDX_Control(pDX, IDC_STATIC_LINK, m_link_web);
 	DDX_Control(pDX, IDC_UserID, m_EditView);
@@ -518,7 +518,8 @@ void CLed_toolDlg::OnPaint()
 	if (firt_i)
 	{
 		firt_i = 0;
-		OnMouseMove(100, NULL);
+		OnMouseMove(0, NULL);
+		mouse_flag = 0;
 		CBitmap bitmap;  // CBitmap对象，用于加载位图   
 		HBITMAP hBmp;    // 保存CBitmap加载的位图的句柄   
 
@@ -1101,25 +1102,26 @@ void CLed_toolDlg::OnMouseMove(UINT nFlags, CPoint point)
 	CString temp;
 	LOGFONT lf;
 	CFont m_Font;
-	if (nFlags ==100||(point.x >= 1050 && point.x <= 1490 && point.y >= 30 && point.y <= 490))
+	if (mouse_flag ==1&&(point.x >= 1050 && point.x <= 1490 && point.y >= 400 && point.y <= 490))
 	{
-		nFlags = 0;
+		mouse_flag = 0;
 		temp.Format("%d %d", point.x, point.y);
 	
 		GetFont()->GetObject(sizeof(lf), &lf);
 		lf.lfUnderline = TRUE;//具有下划线的文字
-		lf.lfHeight = 30;
+		lf.lfHeight = 32;
 		m_Font.CreateFontIndirect(&lf);
 
 		m_link_web.SetFont(&m_Font,true);
 
 		//AfxMessageBox(temp);
 	}
-	else
+	else if(mouse_flag == 0)
 	{
+		mouse_flag = 1;
 		GetFont()->GetObject(sizeof(lf), &lf);
 		lf.lfUnderline = FALSE;//具 有下划线的文字
-		lf.lfHeight = 30;
+		lf.lfHeight = 32;
 		m_Font.CreateFontIndirect(&lf);
 
 		m_link_web.SetFont(&m_Font, true);
@@ -2096,7 +2098,8 @@ HBRUSH CLed_toolDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if (pWnd->GetDlgCtrlID() == IDC_STATIC_LINK)
 	{
 		//pDC->SetBkColor(RGB(0, 255, 0));//背景色为绿色
-		pDC->SetTextColor(RGB(0, 0, 255));//文字
+		if(mouse_flag ==1)pDC->SetTextColor(RGB(0, 0, 255));//文字
+		else              pDC->SetTextColor(RGB(255, 0, 0));//文字
 		//pDC->SelectObject(&m_font);//文字为15号字体，华文行楷
 		return m_brush;
 	}

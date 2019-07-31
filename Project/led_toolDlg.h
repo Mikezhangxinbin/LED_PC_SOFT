@@ -112,6 +112,7 @@ public:
 	CBrush m_brush;
 	CFont m_font;
 	CStatic m_jzmPicture;
+	unsigned char mouse_flag;
 	void OnGetjiqima();
 	void Get_Data_From_Json();
 	//}}AFX_DATA
