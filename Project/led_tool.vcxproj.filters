@@ -30,6 +30,9 @@
     <ClCompile Include="websocket_endpoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HyperLink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="led_tool.rc">
@@ -64,6 +67,9 @@
     <ClInclude Include="websocket_endpoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HyperLink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\logo2.ico">
@@ -73,6 +79,22 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\logo1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo2.png" />
+    <Image Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Title.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\123.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

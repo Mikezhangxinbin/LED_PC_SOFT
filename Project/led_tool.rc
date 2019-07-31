@@ -24,28 +24,27 @@ LANGUAGE LANG_CHINESE, SUBLANG_NEUTRAL
 // Dialog
 //
 
-IDD_LED_TOOL_DIALOG DIALOGEX 0, 0, 373, 112
+IDD_LED_TOOL_DIALOG DIALOGEX 0, 0, 373, 128
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "led_control Tel:18662637612( Mr Zhang )"
-FONT 10, "Times New Roman", 0, 0, 0x1
+FONT 10, "Times New Roman", 400, 0, 0x0
 BEGIN
-    CONTROL         "IPAddress1",IDC_IPADDRESS1,"SysIPAddress32",WS_TABSTOP,15,71,63,11
-    EDITTEXT        IDC_Port,100,70,25,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Open",IDC_BUTTON1,68,93,37,12
-    PUSHBUTTON      "login",IDC_BUTTON2,106,93,30,12
-    LTEXT           "IP",IDC_STATIC,6,73,10,9
-    LTEXT           "Port",IDC_STATIC,83,71,15,12
-    LTEXT           "Color",IDC_STATIC,6,94,18,11
-    COMBOBOX        IDC_COMBO1,29,93,34,53,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_UserID,6,7,361,57,ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL
-    PUSHBUTTON      "reset",IDC_BUTTON3,342,93,25,12
-    LTEXT           "Obj",IDC_STATIC,131,72,13,12
-    COMBOBOX        IDC_COMBO2,307,70,60,93,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "update",IDC_BUTTON4,142,93,30,12
-    PUSHBUTTON      "Con_SIS",IDC_BUTTON5,172,93,30,12,0,WS_EX_RIGHT
-    PUSHBUTTON      "Con_Mc100",IDC_BUTTON6,203,93,30,12,0,WS_EX_RIGHT
-    PUSHBUTTON      "BX_Init",IDC_BUTTON7,233,93,30,12,0,WS_EX_RIGHT
+    CONTROL         "IPAddress1",IDC_IPADDRESS1,"SysIPAddress32",NOT WS_VISIBLE | WS_TABSTOP,13,76,63,11
+    EDITTEXT        IDC_Port,26,95,25,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    PUSHBUTTON      "Open",IDC_BUTTON1,68,109,37,12
+    PUSHBUTTON      "login",IDC_BUTTON2,106,109,30,12
+    LTEXT           "Color",IDC_STATIC,6,110,18,11
+    COMBOBOX        IDC_COMBO1,29,109,34,53,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_UserID,6,7,361,77,ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL
+    PUSHBUTTON      "reset",IDC_BUTTON3,6,92,25,12,NOT WS_VISIBLE
+    LTEXT           "http://www.suzhouweiyao.com/",IDC_STATIC_LINK,277,106,90,8,SS_NOTIFY
+    COMBOBOX        IDC_COMBO2,6,66,60,93,CBS_DROPDOWN | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "update",IDC_BUTTON4,142,109,30,12
+    PUSHBUTTON      "Con_SIS",IDC_BUTTON5,172,109,30,12,0,WS_EX_RIGHT
+    PUSHBUTTON      "Con_Mc100",IDC_BUTTON6,203,109,30,12,0,WS_EX_RIGHT
+    PUSHBUTTON      "BX_Init",IDC_BUTTON7,233,109,30,12,0,WS_EX_RIGHT
+    CONTROL         IDB_BITMAP1,IDC_STATIC_PICTURE,"Static",SS_BITMAP,284,93,83,28
 END
 
 
@@ -62,7 +61,7 @@ BEGIN
         LEFTMARGIN, 6
         RIGHTMARGIN, 367
         TOPMARGIN, 7
-        BOTTOMMARGIN, 105
+        BOTTOMMARGIN, 121
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -82,9 +81,8 @@ BEGIN
     0, 0, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0,
     100, 0, 0, 0,
+    0, 0, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -249,6 +247,31 @@ BEGIN
 END
 
 #endif    // Chinese (Traditional, Taiwan) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\123.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

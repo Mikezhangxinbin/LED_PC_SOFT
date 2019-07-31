@@ -1,0 +1,13 @@
+------------------------------------------------------------
+起始记录时间:2019-07-31 10:54:23
+ExeFileName:C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\.\Release\led_tool.exe
+------------------------------------------------------------
+2019-07-31 10:54:23	[GT_MEMORY]free_thread_memory_pool thread:15876
+2019-07-31 10:54:39	[GT_MEMORY]free_thread_memory_pool thread:32728
+2019-07-31 10:54:39	[GT_MEMORY]free_thread_memory_pool thread:29568
+2019-07-31 10:54:39	[GT_MEMORY]free_thread_memory_pool thread:6200
+2019-07-31 10:54:39	[GT_MEMORY]free_thread_memory_pool thread:28340
+------------------------------------------------------------
+ExeFileName:C:\Project\xb_zhang\PC_TOOL\LED_PC_SOFT\Project\.\Release\led_tool.exe
+终止记录时间:2019-07-31 10:54:39
+------------------------------------------------------------

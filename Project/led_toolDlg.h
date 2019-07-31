@@ -17,6 +17,8 @@
 #include "websocket_endpoint.h"
 #include "afxwin.h"
 #include "Resource.h"
+#include "HyperLink.h"
+
 /*
 获取程序运行时间
 */
@@ -87,7 +89,7 @@ public:
 	DWORD m_dwHandle;
 	char Get_Machine_data[200];
 	Led_Screen led_sname[50];
-	
+	CHyperLink	m_HyperLink;
 	char*	sdbname[TAG_NUM];		//in/out数据库实例名 16
 	char*	sdbtagname[TAG_NUM];	//in/out数据库标签名 80
 	char*	sdes[TAG_NUM];			//in/out描述 80
@@ -106,6 +108,10 @@ public:
 	CButton	m_login;
 	CComboBox	m_ctrlPort;
 	CString	m_statedisplay;
+	CEdit m_link_web;
+	CBrush m_brush;
+	CFont m_font;
+	CStatic m_jzmPicture;
 	void OnGetjiqima();
 	void Get_Data_From_Json();
 	//}}AFX_DATA
@@ -129,6 +135,9 @@ public:
 	void onWebFail(std::string strReason);
 	void onWebClose(int nCode, std::string strCode, std::string strReason);
 	void onWebMessage(std::string strMessage);
+	void OnStaticLink();
+	void OnStaticLinkMove();
+	
 	afx_msg void OnWebBnClickedCancel();
 	CEdit m_EditView;
 	afx_msg void OnWebBnClickedConnect();
@@ -158,6 +167,7 @@ protected:
 	afx_msg void Ondenglu();
 	afx_msg void Onupdata();
 	afx_msg void OnClose();
+	afx_msg  void OnMouseMove(UINT nFlags, CPoint point);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 
@@ -170,6 +180,8 @@ public:
 	afx_msg void OnBnClickedButton7();
 	afx_msg void OnEnChangePort();
 	afx_msg void OnEnChangeUserid();
+	afx_msg void OnStnClickedStaticPort2();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 };
 
 //{{AFX_INSERT_LOCATION}}

@@ -12,6 +12,7 @@
 #include "McControl.h"
 #include "Led5kSDK.h"
 #include <FCNTL.H>
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -77,6 +78,8 @@ protected:
 	//{{AFX_MSG(CAboutDlg)
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
+	
 };
 
 CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD)
@@ -128,7 +131,9 @@ void CLed_toolDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COMBO2, m_Obj_Chrct);
 	DDX_Control(pDX, IDC_BUTTON2, m_login);
 	DDX_Control(pDX, IDC_COMBO1, m_ctrlPort);
+	DDX_Control(pDX, IDC_STATIC_PICTURE, m_jzmPicture);
 	DDX_Text(pDX, IDC_UserID, m_statedisplay);
+	DDX_Control(pDX, IDC_STATIC_LINK, m_link_web);
 	DDX_Control(pDX, IDC_UserID, m_EditView);
 	//}}AFX_DATA_MAP
 }
@@ -143,14 +148,19 @@ BEGIN_MESSAGE_MAP(CLed_toolDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON2, Ondenglu)
 	ON_BN_CLICKED(IDC_BUTTON4, Onupdata)
 	ON_MESSAGE(WM_SHOWTASK,onShowTask)
+	ON_WM_MOUSEMOVE()
     ON_WM_TIMER()
 	ON_WM_CLOSE()
 	//}}AFX_MSG_MAP
 	ON_BN_CLICKED(IDC_BUTTON5, &CLed_toolDlg::OnBnClickedButton5)
 	ON_BN_CLICKED(IDC_BUTTON6, &CLed_toolDlg::OnBnClickedButton6)
 	ON_BN_CLICKED(IDC_BUTTON7, &CLed_toolDlg::OnBnClickedButton7)
+	ON_BN_CLICKED(IDC_STATIC_LINK, &CLed_toolDlg::OnStaticLink)
+	//ON_WM_MOUSEMOVE(IDC_STATIC, &CLed_toolDlg::OnStaticLinkMove)
 	ON_EN_CHANGE(IDC_Port, &CLed_toolDlg::OnEnChangePort)
 	ON_EN_CHANGE(IDC_UserID, &CLed_toolDlg::OnEnChangeUserid)
+
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -199,7 +209,7 @@ BOOL CLed_toolDlg::OnInitDialog()
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 	//Get_Data_From_Json();
-
+	
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
@@ -233,6 +243,14 @@ BOOL CLed_toolDlg::OnInitDialog()
 	m_ctrlPort.SetCurSel(m_clor);
 	m_Obj_Chrct.SetCurSel(m_chrct);
 
+	//m_HyperLink.SetURL(_T("http://www.suzhouweiyao.com/"));
+	LOGFONT lf;
+	CFont m_Font;
+	GetFont()->GetObject(sizeof(lf), &lf);
+	lf.lfUnderline = TRUE;//具有下划线的文字
+	m_Font.CreateFontIndirect(&lf);
+
+	m_link_web.SetFont(&m_Font, true);
 	memset(g_tmp[0],0,50);
 	memset(g_tmp[1],0,50);
 	memset(g_tmp[2],0,50);
@@ -366,10 +384,10 @@ memset(store_id, 0x0, 100);
 	if (Debug_Statue == 0)
 	{
 		OnGetjiqima();
-		//License_Enable = strcmp(Get_Machine_data, "B831B5A0F8DA000806EA-00000000-00000000");
+		License_Enable = strcmp(Get_Machine_data, "B831B5A0F8DA000806EA-00000000-00000000");
 		//License_Enable = strcmp(Get_Machine_data, "00E18CB63528000806E9-00000000-00000000");
-		License_Enable = strcmp(Get_Machine_data, "00E04C0741E1000206A7-00000000-00000000"); //01 广州
-		 // License_Enable = strcmp(Get_Machine_data, "00E04C680B8B000306A9-00000000-00000000"); //02 天津
+		//License_Enable = strcmp(Get_Machine_data, "00E04C0741E1000206A7-00000000-00000000"); //01 广州
+		//  License_Enable = strcmp(Get_Machine_data, "00E04C680B8B000306A9-00000000-00000000"); //02 天津
 		//  License_Enable = strcmp(Get_Machine_data, "00F1F523EA7E000206A7-00000000-00000000"); //03 深圳
 		if (License_Enable)
 		{
@@ -423,7 +441,7 @@ memset(store_id, 0x0, 100);
 #endif
 
 //Connect();
-
+  
 	hThreadEvent1=CreateThread(NULL,0,
 		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED1,
 		NULL,0,NULL);  
@@ -465,6 +483,8 @@ memset(store_id, 0x0, 100);
 	//CloseHandle(hThreadEvent1);
 
 
+  // m_font.CreatePointFont(30, "华文行楷");//代表15号字体，华文行楷
+     m_brush.CreateSolidBrush(RGB(165, 165, 165));//画刷为绿色
 
 
 
@@ -491,9 +511,19 @@ void CLed_toolDlg::OnSysCommand(UINT nID, LPARAM lParam)
 // If you add a minimize button to your dialog, you will need the code below
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
-
+int firt_i = 1;
 void CLed_toolDlg::OnPaint() 
 {
+	
+	if (firt_i)
+	{
+		firt_i = 0;
+		OnMouseMove(100, NULL);
+		CBitmap bitmap;  // CBitmap对象，用于加载位图   
+		HBITMAP hBmp;    // 保存CBitmap加载的位图的句柄   
+
+		
+	}
 	if (IsIconic())
 	{
 		CPaintDC dc(this); // device context for painting
@@ -1064,6 +1094,38 @@ void CLed_toolDlg::OnClose()
 	Shell_NotifyIcon(NIM_ADD,&nid);//ÔÚÍÐÅÌÇøÌí¼ÓÍ¼±ê 
 	ShowWindow(SW_HIDE);//Òþ²ØÖ÷´°¿Ú 
 	//CDialog::OnClose();
+}
+
+void CLed_toolDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	CString temp;
+	LOGFONT lf;
+	CFont m_Font;
+	if (nFlags ==100||(point.x >= 1050 && point.x <= 1490 && point.y >= 30 && point.y <= 490))
+	{
+		nFlags = 0;
+		temp.Format("%d %d", point.x, point.y);
+	
+		GetFont()->GetObject(sizeof(lf), &lf);
+		lf.lfUnderline = TRUE;//具有下划线的文字
+		lf.lfHeight = 30;
+		m_Font.CreateFontIndirect(&lf);
+
+		m_link_web.SetFont(&m_Font,true);
+
+		//AfxMessageBox(temp);
+	}
+	else
+	{
+		GetFont()->GetObject(sizeof(lf), &lf);
+		lf.lfUnderline = FALSE;//具 有下划线的文字
+		lf.lfHeight = 30;
+		m_Font.CreateFontIndirect(&lf);
+
+		m_link_web.SetFont(&m_Font, true);
+
+	}
+	
 }
 
 
@@ -1811,6 +1873,7 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 	CString prompt;
 	bx_5k_area_header my_area;
 	int i = 0;
+
 	if (nIDEvent == 2) //Time2 deal
 	{
 		if (m_bConnect == FALSE)
@@ -2002,4 +2065,41 @@ DWORD ThreadProcEvent_LED10(LPVOID pParam)
 		}
 		Sleep(5);
 	}
+}
+
+void CLed_toolDlg::OnStaticLink()
+{
+	// TODO: Add your command handler code here
+	ShellExecute(0, NULL, _T("http://www.suzhouweiyao.com/"), NULL, NULL, SW_NORMAL);
+}
+
+void CLed_toolDlg::OnStaticLinkMove()
+{
+	// TODO: Add your command handler code here
+	//ShellExecute(0, NULL, _T("http://www.suzhouweiyao.com/"), NULL, NULL, SW_NORMAL);
+	AfxMessageBox("M");
+}
+
+
+void CLed_toolDlg::OnStnClickedStaticPort2()
+{
+	// TODO: Add your control notification handler code here
+}
+
+
+HBRUSH CLed_toolDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+
+
+	// TODO: Change any attributes of the DC here
+	if (pWnd->GetDlgCtrlID() == IDC_STATIC_LINK)
+	{
+		//pDC->SetBkColor(RGB(0, 255, 0));//背景色为绿色
+		pDC->SetTextColor(RGB(0, 0, 255));//文字
+		//pDC->SelectObject(&m_font);//文字为15号字体，华文行楷
+		return m_brush;
+	}
+	// TODO:  Return a different brush if the default is not desired
+	return hbr;
 }
