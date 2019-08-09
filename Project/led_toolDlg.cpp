@@ -4,9 +4,6 @@
 #include "stdafx.h"
 #include "led_tool.h"
 #include "led_toolDlg.h"
-//#include "ft2build.h"
-//#include "freetype/freetype.h"
-//#include "freetype/ftglyph.h "
 #include <sys/stat.h>
 #include <io.h>
 #include "McControl.h"
@@ -161,6 +158,7 @@ BEGIN_MESSAGE_MAP(CLed_toolDlg, CDialog)
 	ON_EN_CHANGE(IDC_UserID, &CLed_toolDlg::OnEnChangeUserid)
 
 	ON_WM_CTLCOLOR()
+	ON_NOTIFY(IPN_FIELDCHANGED, IDC_IPADDRESS1, &CLed_toolDlg::OnIpnFieldchangedIpaddress1)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -255,7 +253,7 @@ BOOL CLed_toolDlg::OnInitDialog()
 	memset(g_tmp[1],0,50);
 	memset(g_tmp[2],0,50);
 	// TODO: Add extra initialization here
-	//InitSocket();
+	InitSocket();
 
 	TCHAR szFilePath[MAX_PATH + 1];
     GetModuleFileName(NULL, szFilePath, MAX_PATH);
@@ -265,17 +263,17 @@ BOOL CLed_toolDlg::OnInitDialog()
 	CString info_temp;
     ConfigPathName.Format("%s\\config.ini",str_url);
 	CIni nIniParam(ConfigPathName);
-memset(led_sname[0].IP,0x0,50);
-memset(led_sname[1].IP,0x0,50);
-memset(led_sname[2].IP,0x0,50);
-memset(led_sname[3].IP,0x0,50);
-memset(led_sname[4].IP,0x0,50);
-memset(led_sname[5].IP,0x0,50);
-memset(led_sname[6].IP, 0x0, 50);
-memset(led_sname[7].IP, 0x0, 50);
-memset(led_sname[8].IP, 0x0, 50);
-memset(led_sname[9].IP, 0x0, 50);
-memset(store_id, 0x0, 100);
+	memset(led_sname[0].IP,0x0,50);
+	memset(led_sname[1].IP,0x0,50);
+	memset(led_sname[2].IP,0x0,50);
+	memset(led_sname[3].IP,0x0,50);
+	memset(led_sname[4].IP,0x0,50);
+	memset(led_sname[5].IP,0x0,50);
+	memset(led_sname[6].IP, 0x0, 50);
+	memset(led_sname[7].IP, 0x0, 50);
+	memset(led_sname[8].IP, 0x0, 50);
+	memset(led_sname[9].IP, 0x0, 50);
+	memset(store_id, 0x0, 100);
 	strInfo = nIniParam.GetValue("SIS_Name1", "IP", "FFFFFFFF");
 	memcpy(led_sname[0].IP,strInfo.GetBuffer(strInfo.GetLength()),strInfo.GetLength());
 
@@ -408,11 +406,8 @@ memset(store_id, 0x0, 100);
 
 #endif
 
-#if 0
-  if( memcmp("Error",OpenFilePath.GetBuffer(3),3) == 0)
-         AfxMessageBox(OpenFilePath+"please choose a file for first time");
-  else
-  {
+#if 1
+
 	    ::GetPrivateProfileString("IP_address","ip","Error",m_strip.GetBuffer(MAX_PATH),MAX_PATH,ConfigPathName);
         ::GetPrivateProfileString("IP_address","port","Error",strPORT.GetBuffer(MAX_PATH),MAX_PATH,ConfigPathName);
 		::GetPrivateProfileString("IP_address","str_ip","Error",str_ip.GetBuffer(MAX_PATH),MAX_PATH,ConfigPathName);
@@ -433,15 +428,16 @@ memset(store_id, 0x0, 100);
 		}
 		
 
-		//Ondenglu();
-	//	DL_FLAG =1;
+		Ondenglu();
+		DL_FLAG =1;
 		
 
-  }
 #endif
 
-//Connect();
-  
+	//Connect();
+    hThreadEvent1 = CreateThread(NULL, 0,
+	  (LPTHREAD_START_ROUTINE)ThreadProcEvent1,
+	  NULL, 0, NULL);
 	hThreadEvent1=CreateThread(NULL,0,
 		(LPTHREAD_START_ROUTINE)ThreadProcEvent_LED1,
 		NULL,0,NULL);  
@@ -479,7 +475,7 @@ memset(store_id, 0x0, 100);
 	  SetTimer(2, 5000, NULL);
 	  SetTimer(1, 30000, NULL);
   }
-	
+ 
 	//CloseHandle(hThreadEvent1);
 
 
@@ -648,6 +644,110 @@ CString CLed_toolDlg::GetTimeStr(void)						//Ê±¼ä×ª»»Îª×Ö·û´®
 }
 unsigned int count =1;
 
+void CLed_toolDlg::OnSync_From_File()
+{
+
+	static char first_forap = 0;
+	int inlen = 0;
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int m[3];
+	int m1 = 0;
+	int m2 = 0;
+	int m3 = 0;
+	unsigned char indata[100];
+	unsigned  char temp[3][50];
+	char *p = "adbcd";
+
+	CString tmp;
+	DWORD dwIP[3];
+
+	
+	if ((fp = fopen(OpenFilePath, "rb")) == NULL)
+	{
+
+		goto RETURN;
+	}
+	else
+	{
+
+	}
+
+	inlen = filelength(fileno(fp));
+	memset(indata, 0, 100);
+	memset(temp[0], 0, 50);
+	memset(temp[1], 0, 50);
+	memset(temp[2], 0, 50);
+
+	if (fread(indata, 1, inlen, fp) != inlen)
+	{
+
+		goto RETURN1;
+	}
+
+
+
+
+	for (i = 0; i < inlen; i++)
+	{
+		if (indata[i] == '\r' || indata[i] == '\n')
+		{
+			k = 0;
+		}
+		else
+		{
+			if (k == 0) j++;
+			temp[j - 1][k++] = indata[i];
+
+		}
+
+	}
+	m[0] = 0;
+	m[1] = 0;
+	m[2] = 0;
+
+
+	m[0] = 32 - strlen((char*)(&temp[0])) * 4;
+	m[1] = 32 - strlen((char*)(&temp[1])) * 4;
+	m[2] = 32 - strlen((char*)(&temp[2])) * 4;
+
+
+
+	for (i = 0; i < 3; i++)
+	{
+		if (m[i] < 0) m[i] = 0;
+		if (memcmp(g_tmp[i], temp[i], 10))
+		{
+
+
+			tmp.Format("led t 255 98 %d abcdefgh\n led t %d %d %d %s \r\n", 6 + i * 20, m_clor, m[i] + 100, 4 + i * 20, temp[i]);
+			send(m_socket[0], tmp.GetBuffer(tmp.GetLength()), tmp.GetLength(), 0);
+
+			memcpy(g_tmp[i], temp[i], 10);
+		}
+		else
+		{
+
+
+		}
+
+	}
+
+
+RETURN1:
+
+	fclose(fp);
+
+RETURN:
+
+	return;
+	UpdateData(false);
+}
+
+
+
+
 void CLed_toolDlg::OnBtnSend2() 
 {
 	UpdateData(true);
@@ -743,11 +843,6 @@ DWORD ThreadProcEvent1(LPVOID pParam)
 	tempBuf[1] ="ÇëÇóÖÐ...";
 	tempBuf[2] ="ÇëÇóÖÐ...";
 
-	while (1)
-	{
-
-		Sleep(5);
-	}
 	
 	while(1)
 	{
@@ -766,23 +861,23 @@ DWORD ThreadProcEvent1(LPVOID pParam)
 			
 			 ser_addr.sin_port=htons(atoi(strPORT));
 		
-		if(connect(m_socket[0],(struct sockaddr*)&ser_addr,sizeof(SOCKADDR))!=0)/*ÇëÇóÁ¬½Ó*/
+			if(connect(m_socket[0],(struct sockaddr*)&ser_addr,sizeof(SOCKADDR))!=0)/*ÇëÇóÁ¬½Ó*/
 			
-		{
+			{
 			
 		
-				
-			tempBuf[0] ="³¬Ê±";
+				SetTimer(3, 1000, NULL);
+				tempBuf[0] ="³¬Ê±";
 			
-		}
-		else
-		{
+			}
+			else
+			{
 
-		   tempBuf[0] ="³É¹¦";
-		   dl_state = 1;
+			   tempBuf[0] ="³É¹¦";
+			   dl_state = 1;
 
 	
-		}
+			}
 		display.Format("Á¬½ÓÏÔÊ¾ÆÁ%s\r\n",tempBuf[0]);
 		DL_FLAG = 0;
 		dl =1 ;
@@ -955,52 +1050,6 @@ void CLed_toolDlg::Onupdate()
 
 
 
-
-		tmp.Format("led clearall\n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-      
-		tmp.Format("led r 0 1 1 190 62 \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-
-
-		tmp.Format("led l 0 1 22 190 22 \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-		tmp.Format("led l 0 1 43 190 43 \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-		tmp.Format("led l 0 80 1 80 62 \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-
-
-		tmp.Format("led t 0 20 6 Ñ¹ \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-        tmp.Format("led t 0 48 6 Á¦ \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-		tmp.Format("led t 0 18 26 ¹©ÆûÁ¿ \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-		tmp.Format("led t 0 18 46 ÊÛÆûÁ¿ \n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-
-
-
-        tmp.Format("led t 0 164 6 MPa\n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-		tmp.Format("led t 0 164 26  T/H\n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-		tmp.Format("led t 0 164 46  T/H\n");
-		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
-		Sleep(5);
-
 		tmp.Format("file save\n");
 		send(m_socket[0],tmp.GetBuffer(tmp.GetLength()),tmp.GetLength(),0);
 		Sleep(5);
@@ -1120,7 +1169,7 @@ void CLed_toolDlg::OnMouseMove(UINT nFlags, CPoint point)
 	{
 		mouse_flag = 1;
 		GetFont()->GetObject(sizeof(lf), &lf);
-		lf.lfUnderline = FALSE;//具 有下划线的文字
+		lf.lfUnderline = TRUE;//具 有下划线的文字
 		lf.lfHeight = 32;
 		m_Font.CreateFontIndirect(&lf);
 
@@ -1875,8 +1924,11 @@ void CLed_toolDlg::OnTimer(UINT nIDEvent)
 	CString prompt;
 	bx_5k_area_header my_area;
 	int i = 0;
-
-	if (nIDEvent == 2) //Time2 deal
+	if (nIDEvent == 3) //Time2 deal
+	{
+		OnSync_From_File();
+	}
+	else if (nIDEvent == 2) //Time2 deal
 	{
 		if (m_bConnect == FALSE)
 		{
@@ -2105,4 +2157,12 @@ HBRUSH CLed_toolDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	}
 	// TODO:  Return a different brush if the default is not desired
 	return hbr;
+}
+
+
+void CLed_toolDlg::OnIpnFieldchangedIpaddress1(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMIPADDRESS pIPAddr = reinterpret_cast<LPNMIPADDRESS>(pNMHDR);
+	// TODO: Add your control notification handler code here
+	*pResult = 0;
 }

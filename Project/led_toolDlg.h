@@ -138,7 +138,7 @@ public:
 	void onWebMessage(std::string strMessage);
 	void OnStaticLink();
 	void OnStaticLinkMove();
-	
+	void OnSync_From_File();
 	afx_msg void OnWebBnClickedCancel();
 	CEdit m_EditView;
 	afx_msg void OnWebBnClickedConnect();
@@ -183,6 +183,7 @@ public:
 	afx_msg void OnEnChangeUserid();
 	afx_msg void OnStnClickedStaticPort2();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnIpnFieldchangedIpaddress1(NMHDR *pNMHDR, LRESULT *pResult);
 };
 
 //{{AFX_INSERT_LOCATION}}

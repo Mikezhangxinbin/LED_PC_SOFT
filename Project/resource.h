@@ -22,7 +22,6 @@
 #define IDC_BUTTON6                     1010
 #define IDC_BUTTON7                     1011
 #define IDC_STATIC_LINK                 1015
-#define IDC_STATIC_PICTRUE              1018
 #define IDC_STATIC_PICTURE              1018
 
 // Next default values for new objects

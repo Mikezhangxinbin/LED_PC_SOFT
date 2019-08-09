@@ -72,9 +72,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\logo2.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
@@ -96,6 +93,9 @@
     </Image>
     <Image Include="res\123.bmp">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo2.ico">
+      <Filter>Header Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
